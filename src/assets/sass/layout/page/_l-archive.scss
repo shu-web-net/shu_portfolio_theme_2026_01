@@ -1,0 +1,76 @@
+@use "../../global/" as global;
+
+.archive-main {
+  margin-top: 120px;
+}
+
+.archive-slug-name-wrapper {
+  text-align: center;
+  margin-top: 1rem;
+}
+.archive-slug-name {
+  background-color: #4b61a6;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  padding-block: 0.2rem 0.3rem;
+  padding-inline: 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.archive-list {
+  @include global.mq(pc) {
+    display: flex;
+    gap: calc((30 / (1280 - 140 * 2)) * 100%);
+    flex-wrap: wrap;
+  }
+}
+
+.archive-item {
+  background-color: global.$base-color;
+  border-radius: 12px;
+  overflow: hidden;
+  // box-shadow: <水平方向の影の位置> <垂直方向の影の位置> <ぼかしの半径> <広がりの半径> <色> <inset>;
+  box-shadow: 5px 5px 10px #bbb;
+
+  &:nth-child(n + 2) {
+    margin-top: 1.5em;
+
+    @include global.mq(pc) {
+      margin-top: 0;
+    }
+  }
+
+  &:nth-child(n + 4) {
+    @include global.mq(pc) {
+      margin-top: 1.5em;
+    }
+  }
+
+  @include global.mq(pc) {
+    width: calc((1000 - 30 * 2) / 3 / 1000 * 100%);
+  }
+}
+
+.archive-item-img {
+  aspect-ratio: 400 / 250;
+  object-fit: cover;
+}
+
+.archive-item-body {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-inline: 1em;
+}
+
+.archive-item-title {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: global.$main-color;
+}
+
+.archive-item-excerpt {
+  margin-top: 0.5em;
+  font-family: global.$ff-noto;
+}

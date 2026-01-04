@@ -1,0 +1,49 @@
+@use "../global/" as global;
+
+.pagination-archive {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  a {
+    transition: all 0.3s ease;
+    &:hover {
+      color: global.$accent-color;
+      opacity: 0.7;
+    }
+  }
+}
+
+
+.page-numbers {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: global.$text-color-white;
+  background-color: global.$sub-color-03;
+  border-radius: 50%;
+  font-weight: 700;
+ &.current {
+  color: global.$main-color;
+  
+ }
+}
+
+
+
+
+.fas {
+
+}
+
+.fa-angles-left {
+
+}
+
+.fa-angles-right {
+
+}
+

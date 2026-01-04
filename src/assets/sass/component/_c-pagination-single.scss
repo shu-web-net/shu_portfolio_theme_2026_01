@@ -1,0 +1,51 @@
+@use "../global/" as global;
+
+// 個別投稿記事内の、前の記事へ・記事一覧・次の記事へ
+.pagination-single {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+
+  @include global.mq(pc) {
+    gap: 2.5rem;
+  }
+}
+.pagination-single-prev,
+.pagination-single-list,
+.pagination-single-next {
+  padding-inline: 0.6rem;
+  // padding-block: 0.3rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.3rem;
+  border-radius: 8px;
+  color: global.$text-color-white;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  @include global.mq(pc) {
+    font-size: 1.5rem;
+    padding-inline: 0.9rem;
+  }
+
+  &:hover {
+    opacity: 0.7;
+    color: global.$accent-color;
+  }
+}
+.pagination-single-prev {
+  background-color: global.$sub-color-03;
+}
+
+.u-sp-hide {
+}
+
+.pagination-single-list {
+  background-color: global.$sub-color-01;
+}
+
+.pagination-single-next {
+  background-color: global.$sub-color-03;
+}

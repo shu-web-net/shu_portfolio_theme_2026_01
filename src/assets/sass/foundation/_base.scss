@@ -1,0 +1,36 @@
+@use "../global/" as global;
+
+// スティッキーフッター
+html {
+  height: 100%; /* html要素の高さを100%に */
+}
+
+body {
+  display: flex; /* bodyをFlexコンテナに */
+  flex-direction: column; /* 子要素を縦方向に並べる */
+  min-height: 100vh; /* bodyの最小の高さをビューポート（画面表示領域）の100%に */
+  margin: 0; /* bodyのデフォルトマージンをリセット */
+}
+
+main {
+  flex-grow: 1;
+}
+
+// ベーススタイル
+
+body {
+  color: global.$text-color-black;
+  font-family: global.$ff-base;
+  font-size: global.$fs-base;
+  font-weight: global.$fw-base;
+  line-height: global.$lh-base;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}

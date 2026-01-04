@@ -1,0 +1,55 @@
+@use "../../global/" as global;
+
+.error-404-page {
+  padding-top: 40px;
+
+  @include global.mq(pc) {
+      padding-top: 60px;
+  }
+}
+
+.l-inner {
+}
+
+.error-404-page-img-container {
+  position: relative;
+
+  & a {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ccc;
+    font-size: 0.6em;
+
+    @include global.mq(pc) {
+      bottom: 80px;
+    }
+  }
+}
+
+.error-404-page-img {
+  // display: block;
+}
+
+.error-404-page-title {
+  font-size: 2em;
+  font-weight: 700;
+  color: global.$accent-color-red;
+}
+
+.error-404-page-text {
+  font-weight: 700;
+  margin-top: 1em;
+}
+
+.back-to-home-404 {
+  margin-top: 1em;
+  display: inline-block;
+}
+
+.back-to-home-404-link {
+  color: global.$main-color;
+  text-decoration: underline;
+  font-weight: 700;
+}

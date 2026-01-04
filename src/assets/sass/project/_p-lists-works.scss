@@ -1,0 +1,92 @@
+@use "../global/" as global;
+
+.lists-works-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media screen and (min-width: 600px) {
+    // justify-content: space-between;
+  }
+}
+
+.lists-works-item {
+  background-color: global.$base-color;
+  border-radius: 12px;
+  overflow: hidden;
+  // box-shadow: <水平方向の影の位置> <垂直方向の影の位置> <ぼかしの半径> <広がりの半径> <色> <inset>;
+  box-shadow: 5px 5px 10px #bbb;
+
+  &:nth-child(n + 2) {
+    margin-top: 30px;
+
+    @media screen and (min-width: 600px) {
+      margin-top: 0;
+    }
+  }
+
+  @media screen and (max-width: 599px) {
+    max-width: 400px;
+  }
+  @media screen and (min-width: 600px) {
+    width: calc((100% - 20px) / 2);
+  }
+  @media screen and (min-width: 910px) {
+    width: calc((100% - 20px * 2) / 3);
+  }
+  @media screen and (min-width: 1280px) {
+    width: calc((100% - 20px * 3) / 4);
+  }
+}
+
+.lists-works-item-img {
+  width: 100%;
+  aspect-ratio: 480 / 320;
+  object-fit: cover;
+}
+
+.lists-works-item-body {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.lists-works-item-title {
+  color: global.$main-color;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.lists-works-item-excerpt {
+  font-family: global.$ff-noto;
+}
+
+
+// 追加直リンクボタン
+.works-list__link-btn-wrap {
+padding-inline: 16px;
+font-family: global.$ff-noto;
+padding-block: 1rem;
+border-top: 3px solid global.$sub-color-03;
+// background-color: global.$sub-color-03;
+}
+
+
+
+.works-list__link-btn {
+color: global.$main-color;
+font-size: 1.2rem;
+font-weight: 700;
+text-decoration: underline;
+transition: all 0.3s ease;
+// マイナスの値でマーカーのようにも使える
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+
+&:hover {
+  color: global.$accent-color;
+};
+}
+

@@ -1,0 +1,45 @@
+@use "../global/" as global;
+
+.heading-container,
+.heading-link {
+  background-color: global.$sub-color-01;
+  display: inline-flex;
+  justify-content: space-between;
+  // align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.heading-link {
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: global.$sub-color-03;
+
+    .heading {
+      color: global.$accent-color;
+    }
+  }
+}
+
+.heading {
+  color: global.$text-color-white;
+  font-size: 1.5em;
+}
+
+.heading-en {
+}
+
+.heading-underline {
+  content: "";
+  width: 50%;
+  height: 2px;
+  background-color: global.$text-color-white;
+}
+
+.heading-jp {
+}

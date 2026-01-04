@@ -1,0 +1,101 @@
+@use "../../global/" as global;
+
+.contact-main {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.contact-form {
+  background-color: global.$base-color;
+  width: 95vw;
+  max-width: 500px;
+  margin-inline: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 12px;
+}
+
+.contact-body p {
+  margin-top: 0.5em;
+}
+
+.contact-label {
+  color: global.$sub-color-01;
+  font-weight: 700;
+}
+
+.contact-required {
+  color: global.$accent-color;
+  margin-left: 0.5em;
+  font-weight: 700;
+}
+
+.contact-main input[type="text"],
+.contact-main input[type="email"],
+.contact-main textarea {
+  width: 95%;
+  max-width: 400px;
+  border: none;
+  font-family: global.$ff-noto;
+
+  &:hover {
+    outline: 3px solid global.$accent-color;
+  }
+}
+
+.contact-main textarea {
+  height: 200px;
+}
+
+.contact-main input[type="submit"] {
+  background-color: global.$sub-color-01;
+  color: global.$text-color-white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-inline: auto;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: 5px solid global.$main-color;
+
+  &:hover {
+    opacity: 0.8;
+    border: 5px solid global.$accent-color;
+    // color: global.$accent-color;
+  }
+}
+
+.contact-main .wpcf7-spinner {
+  display: none;
+}
+
+.contact-main .x-wrap {
+  margin-top: 3rem;
+}
+
+.contact-main .follow-me {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.contact-privacy {
+  margin-top: 2rem;
+  font-family: global.$ff-noto;
+  font-weight: 700;
+
+  .privacy-link {
+    font-weight: 700;
+    text-decoration: underline;
+    color: global.$main-color;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: global.$accent-color;
+    }
+  }
+}

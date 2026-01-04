@@ -1,0 +1,13 @@
+@use "../global/" as global;
+
+.u-sp-hidden {
+  @include global.mq("sp") {
+    display: none;
+  }
+}
+
+.u-pc-hidden {
+  @include global.mq("pc") {
+    display: none;
+  }
+}

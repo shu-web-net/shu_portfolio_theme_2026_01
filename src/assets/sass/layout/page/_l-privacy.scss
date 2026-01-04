@@ -1,0 +1,88 @@
+@use "../../global/" as global;
+
+.page-privacy-main {
+  margin-top: 120px;
+  text-align: center;
+
+  @include global.mq(pc) {
+    margin-top: 115px;
+  }
+
+  #toc_container {
+    display: none;
+  }
+}
+
+.page-privacy-body {
+  text-align: left;
+  width: 90vw;
+  max-width: 480px;
+  margin-inline: auto;
+
+  & p {
+    margin-top: 1em;
+    // width: 95vw;
+    margin-inline: auto;
+    font-family: global.$ff-noto;
+  }
+
+  & a {
+    color: global.$main-color;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.3s;
+
+    &:hover {
+      color: global.$accent-color;
+    }
+  }
+
+  & .wp-block-separator {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 95vw;
+    margin-inline: auto;
+
+    @include global.mq(pc) {
+      width: 80vw;
+      // max-width: calc(1200 / 1280 * 100vw);
+      max-width: 1200px;
+    }
+  }
+
+  & h2 {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 2em;
+    margin-inline: auto;
+    position: relative;
+    padding-left: 1em;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 4px;
+      height: 100%;
+      background-color: global.$main-color;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  & li {
+    margin-top: 0.6em;
+    position: relative;
+    padding-left: 1.2em;
+
+    &::before {
+      content: "\f111";
+      font: var(--fa-font-solid);
+      font-weight: 700;
+      font-size: 0.5em;
+      position: absolute;
+      left: 0;
+      top: 1.3em;
+    }
+  }
+}

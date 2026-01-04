@@ -1,0 +1,26 @@
+@use "../global/" as global;
+
+.to-top {
+  width: 52px;
+  height: 52px;
+  position: fixed;
+  bottom: 55px;
+  right: 10px;
+  z-index: 20;
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  & path {
+    // fill: global.$main-color;
+    // fill: #fff;
+    fill: global.$accent-color;
+  }
+
+  @include global.mq(pc) {
+    bottom: 40px;
+    right: 20px;
+  }
+}

@@ -1,0 +1,43 @@
+@use "../global/" as global;
+
+.all-tags-list-wrap {
+  margin-top: 2rem;
+}
+
+.all-tags-list-title {
+  font-style: 1.5rem;
+  color: global.$main-color;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.all-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 640px;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+}
+
+.all-tags-item {
+  background-color: global.$sub-color-03;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem 0.2rem;
+  border-radius: 8px;
+  color: global.$text-color-white;
+  font-weight: 700;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.6;
+    color: global.$accent-color;
+  }
+
+  & a {
+    all: inherit;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shu | Web Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 変数定義 (A案のカラーパレット) --- */
+        :root {
+            --primary: #0f172a;      /* 濃紺：テキスト、重要要素 */
+            --accent: #3b82f6;       /* 明るい青：アクセント、ボタン */
+            --accent-light: #eff6ff; /* 薄い青：背景の装飾など */
+            --bg: #ffffff;           /* 白：メイン背景 */
+            --glass: rgba(255, 255, 255, 0.85); /* ガラス効果用 */
+            --text-gray: #64748b;    /* 薄いグレーテキスト */
+            --font-main: 'Noto Sans JP', sans-serif;
+            --font-code: 'Roboto Mono', monospace;
+        }
+
+        /* --- 基本設定 --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--primary);
+            background-color: var(--bg);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 共通クラス --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* タイトルの装飾（英語の背景文字） */
+        .section-title::before {
+            content: attr(data-en);
+            font-family: var(--font-code);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3.5rem;
+            color: var(--accent-light);
+            z-index: -1;
+            opacity: 0.8;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* --- ヘッダー（ガラスモーフィズム） --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+            background: var(--glass);
+            backdrop-filter: blur(12px); /* すりガラス効果 */
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            font-family: var(--font-code);
+        }
+        .logo span { color: var(--accent); }
+
+        nav ul { display: flex; gap: 30px; }
+        nav a { font-size: 0.9rem; font-weight: 500; }
+        nav a:hover { color: var(--accent); }
+
+        /* --- ヒーローエリア --- */
+        .hero {
+            padding: 160px 0 100px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        /* 背景の装飾（CSSだけで描く幾何学模様） */
+        .hero-bg-circle {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .hero-text { flex: 1; }
+
+        .hero-tag {
+            font-family: var(--font-code);
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-feature-settings: "palt";
+        }
+
+        .hero p {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* --- CSSで作るコードエディタ風ビジュアル --- */
+        .code-window {
+            flex: 1;
+            background: #1e293b; /* ダークなエディタ背景 */
+            border-radius: 12px;
+            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.2);
+            overflow: hidden;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            position: relative;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg); /* 少し斜めにする */
+            transition: transform 0.5s ease;
+        }
+
+        .code-window:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg); /* ホバーで正面に */
+        }
+
+        .window-header {
+            background: #334155;
+            padding: 12px 15px;
+            display: flex;
+            gap: 8px;
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ef4444; }
+        .yellow { background: #eab308; }
+        .green { background: #22c55e; }
+
+        .window-body {
+            padding: 20px;
+            color: #e2e8f0;
+        }
+        
+        .line { display: block; margin-bottom: 4px; }
+        .ln { color: #64748b; margin-right: 15px; user-select: none; } /* 行番号 */
+        .tag { color: #f472b6; } /* ピンク */
+        .attr { color: #93c5fd; } /* 水色 */
+        .val { color: #86efac; } /* 緑 */
+        .txt { color: #e2e8f0; } /* 白 */
+        
+        /* タイピングアニメーション用カーソル */
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--accent);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* --- Works セクション --- */
+        .works {
+            padding: 100px 0;
+            background: #f8fafc; /* ごく薄いグレー */
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .work-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .work-img {
+            width: 100%;
+            height: 200px;
+            background: #e2e8f0; /* ダミー画像色 */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ホバー時の画像ズーム効果 */
+        .work-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .work-card:hover .work-img img {
+            transform: scale(1.1);
+        }
+
+        .work-content { padding: 25px; }
+        
+        .work-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .work-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-pill {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 20px;
+            font-family: var(--font-code);
+            font-weight: 500;
+        }
+
+        /* --- フッター --- */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            background: white;
+            border-top: 1px solid #f1f5f9;
+        }
+        .footer-logo {
+            font-family: var(--font-code);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .copyright { color: var(--text-gray); font-size: 0.8rem; }
+
+        /* --- アニメーション用クラス（JSで制御） --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- レスポンシブ対応 --- */
+        @media (max-width: 768px) {
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .section-title::before { font-size: 2.5rem; }
+            .code-window { width: 100%; transform: none; margin-top: 30px; }
+            .code-window:hover { transform: none; }
+            header { padding: 0 20px; }
+            nav { display: none; } /* 簡易的に非表示（実際はハンバーガーメニュー推奨） */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><span><</span> Shu <span>/></span></div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-bg-circle"></div>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <div class="hero-text fade-in-up">
+                    <span class="hero-tag"># Web Coder</span>
+                    <h1>安心感を届ける<br>Web実装のパートナー</h1>
+                    <p>デザインの意図を汲み取り、<br>保守性の高いクリーンなコードで実装します。</p>
+                    <a href="#contact" class="btn">お問い合わせ</a>
+                </div>
+
+                <div class="code-window fade-in-up">
+                    <div class="window-header">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="window-body">
+                        <div class="line"><span class="ln">1</span><span class="tag">const</span> <span class="val">coder</span> = {</div>
+                        <div class="line"><span class="ln">2</span>  <span class="attr">name</span>: <span class="txt">"Shu"</span>,</div>
+                        <div class="line"><span class="ln">3</span>  <span class="attr">skill</span>: [<span class="txt">"HTML5"</span>, <span class="txt">"CSS3"</span>, <span class="txt">"JS"</span>],</div>
+                        <div class="line"><span class="ln">4</span>  <span class="attr">policy</span>: <span class="txt">"Pixel Perfect"</span>,</div>
+                        <div class="line"><span class="ln">5</span>  <span class="attr">status</span>: <span class="val">"Ready to work"</span></div>
+                        <div class="line"><span class="ln">6</span>};</div>
+                        <div class="line"><span class="ln">7</span></div>
+                        <div class="line"><span class="ln">8</span><span class="tag">console</span>.<span class="attr">log</span>(<span class="val">coder</span>);<span class="cursor"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="works" class="works">
+            <div class="container">
+                <h2 class="section-title" data-en="WORKS">制作実績</h2>
+                
+                <div class="works-grid">
+                    <article class="work-card fade-in-up">
+                        <div class="work-img">
+                            <div style="width:100%; height:100%; background: #dbeafe; display:flex; align-items:center; justify-content:center; color:#3b82f6; font-weight:bold;">Image</div>
+                        </div>
+                        <div class="work-content">
+                            <h3 class="work-title">歯科医院 LPサイト</h3>
+                            <p class="work-desc">信頼感を重視した青基調のデザインを、レスポンシブ対応でコーディング。</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">HTML/CSS</span>
+                                <span class="tech-pill">jQuery</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work-card fade-in-up">
+                        <div class="work-img">
+                            <div style="width:100%; height:100%; background: #e0f2fe; display:flex; align-items:center; justify-content:center; color:#0ea5e9; font-weight:bold;">Image</div>
+                        </div>
+                        <div class="work-content">
+                            <h3 class="work-title">美容室 コーポレートサイト</h3>
+                            <p class="work-desc">WordPressを使用した更新性の高いサイト構築。</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">WordPress</span>
+                                <span class="tech-pill">PHP</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work-card fade-in-up">
+                        <div class="work-img">
+                            <div style="width:100%; height:100%; background: #f0f9ff; display:flex; align-items:center; justify-content:center; color:#0284c7; font-weight:bold;">Image</div>
+                        </div>
+                        <div class="work-content">
+                            <h3 class="work-title">Webアプリ UI実装</h3>
+                            <p class="work-desc">Reactを使用した管理画面のコンポーネント設計と実装。</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">React</span>
+                                <span class="tech-pill">Next.js</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo"><span><</span> Shu <span>/></span></div>
+        <p class="copyright">© 2024 Web Coder Portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observerを使って、要素が見えたらクラスを付与
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // 10%見えたら発火
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // 一度アニメーションしたら監視終了
+                }
+            });
+        }, observerOptions);
+
+        // .fade-in-up クラスがついている要素を全て監視
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

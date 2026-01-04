@@ -1,0 +1,116 @@
+@use "../global/" as global;
+
+.mv {
+  margin-top: 80px;
+
+  @include global.mq(pc) {
+    margin-top: 80px;
+  }
+}
+
+.mv__slider {
+  width: max(375px, 100vw);
+  height: 447px;
+  padding-inline: 20px;
+  position: relative;
+  margin-inline: auto;
+
+  @media screen and (min-width: 768px) {
+    padding-inline: calc(60 / 1280 * 100vw);
+    height: calc((40 + 520) / 1280 * 100vw);
+  }
+}
+
+.mv__slider-slide-img {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  width: max(375px, 100%);
+  object-position: center;
+  object-fit: cover;
+  height: 100%;
+
+  @include global.mq(pc) {
+    border-radius: 20px;
+  }
+}
+
+.mv__slider-pagination {
+  position: absolute;
+  left: 1px !important;
+  bottom: 18px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include global.mq(pc) {
+    gap: 10px;
+    left: 33px !important;
+    bottom: 3px !important;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background-color: global.$main-color;
+
+  @include global.mq(pc) {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 48px;
+  height: auto;
+
+  @include global.mq(pc) {
+    width: 70px;
+  }
+
+  & path {
+    fill: global.$main-color;
+    transition: fill 0.3s ease;
+
+    &:hover {
+      fill: global.$accent-color;
+    }
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+.swiper-button-prev {
+  left: -5px !important;
+
+  @media screen and (min-width: 768px) {
+    left: 27px !important;
+    transform: translateY(7px);
+  }
+}
+
+.swiper-button-next {
+  right: -2px !important;
+
+  @media screen and (min-width: 768px) {
+    right: 24px !important;
+    transform: translateY(7px);
+  }
+}
+
+.mv__slider-text {
+  position: absolute;
+  left: 40px;
+  bottom: 37px;
+  z-index: 10;
+  background-color: #fff;
+
+  @media screen and (min-width: 768px) {
+    bottom: 50px;
+    left: 120px;
+  }
+}

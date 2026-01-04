@@ -1,22 +1,17 @@
-// フォント
-$ff-base: "M PLUS Rounded 1c", sans-serif;
-$ff-noto: "Noto Sans JP", sans-serif;
-$fs-base: 16px;
-$fw-base: 400;
-$lh-base: normal;
+/* --- CSS Variables --- */
+:root {
+  /* Colors */
+  --bg-deep: #050505;
+  --bg-sub: #111111;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
 
-// color
-$text-color-black: #393939;
-$text-color-white: #ffffff;
+  /* Accents */
+  --accent-primary: #00f2ff;
+  --accent-secondary: #7000ff;
+  --accent-success: #00ff9d;
 
-$main-color: #03258c;
-$base-color: #f2eddf;
-$sub-color-01: #14328c;
-$sub-color-02: #4b61a6;
-$sub-color-03: #8f9bbf;
-$accent-color: #ff9a08;
-$accent-color-red: #f82d2d;
-
-// レイアウト
-$pc-width: 1280px;
-$sp-width: 375px;
+  /* Fonts */
+  --font-jp: "Noto Sans JP", sans-serif;
+  --font-code: "Fira Code", monospace;
+}

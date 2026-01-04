@@ -8,30 +8,42 @@
     </div>
 
     <div class="journal__list">
-      <a href="#" class="journal-item u-fade-in-up">
-        <span class="journal-item__date">2024.12.15</span>
-        <div class="journal-item__content">
-          <h3 class="journal-item__title">今週の学習記録：Next.jsのレンダリングについて</h3>
-          <div class="journal-item__tags"><span class="journal-item__tag">Study</span><span class="journal-item__tag">Next.js</span></div>
-        </div>
-        <div class="journal-item__arrow">read.md -></div>
-      </a>
-      <a href="#" class="journal-item u-fade-in-up" style="transition-delay: 0.1s">
-        <span class="journal-item__date">2024.11.28</span>
-        <div class="journal-item__content">
-          <h3 class="journal-item__title">デスク環境をアップデートしました</h3>
-          <div class="journal-item__tags"><span class="journal-item__tag">Life</span><span class="journal-item__tag">Gadget</span></div>
-        </div>
-        <div class="journal-item__arrow">read.md -></div>
-      </a>
-      <a href="#" class="journal-item u-fade-in-up" style="transition-delay: 0.2s">
-        <span class="journal-item__date">2024.11.10</span>
-        <div class="journal-item__content">
-          <h3 class="journal-item__title">11月の振り返りと来月の目標</h3>
-          <div class="journal-item__tags"><span class="journal-item__tag">Log</span><span class="journal-item__tag">Goal</span></div>
-        </div>
-        <div class="journal-item__arrow">read.md -></div>
-      </a>
+      <?php
+      $my_query = new WP_Query(
+        array(
+          'post_type'      => 'post',
+          'posts_per_page' => 3,
+        )
+      );
+      ?>
+      <?php if ($my_query->have_posts()) : ?>
+        <?php while ($my_query->have_posts()) : ?>
+          <?php $my_query->the_post(); ?>
+
+          <a href="<?php the_permalink(); ?>" class="journal-item u-fade-in-up">
+            <time class="journal-item__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.n.j'); ?></time>
+
+            <div class="journal-item__content">
+              <h3 class="journal-item__title"><?php echo wp_trim_words(get_the_title(), 40, '…'); ?></h3>
+
+              <ul class="journal-item__tags">
+                  <?php
+                  $post_tags = get_the_tags();
+                  if ($post_tags) {
+                    foreach ($post_tags as $tag) {
+                      echo '<li class="journal-item__tag">' . esc_html($tag->name) . '</li>';
+                    }
+                  }
+                  ?>
+              </ul>
+            </div>
+
+            <div class="journal-item__arrow">read.md -></div>
+          </a>
+
+        <?php endwhile; ?>
+      <?php endif; ?>
+      <?php wp_reset_postdata(); ?>
     </div>
 
     <div class="journal__view-all u-fade-in-up">

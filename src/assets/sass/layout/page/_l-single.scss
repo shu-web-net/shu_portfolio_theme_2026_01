@@ -2,7 +2,6 @@
 
 .single {
   padding-top: 120px;
-  font-family: global.$ff-noto;
   text-align: left;
 }
 
@@ -30,7 +29,7 @@
 .eye-catcher-copy-wrap {
   font-size: 0.9rem;
   a {
-    color: global.$main-color;
+    color: var(--text-main);
     font-weight: 700;
     text-decoration: underline;
   }
@@ -50,7 +49,7 @@
   & #toc_container {
     margin-inline: auto;
     padding-bottom: 1em;
-    background-color: global.$base-color;
+    background-color: var(--bg-sub);
     margin-top: 2rem;
 
     @include global.mq(pc) {
@@ -66,13 +65,13 @@
   }
 
   & a {
-    color: global.$main-color;
+    color: var(--text-main);
     font-weight: 700;
     text-decoration: underline;
     transition: color 0.3s;
 
     &:hover {
-      color: global.$accent-color;
+      color: var(--accent-primary);
     }
   }
 
@@ -116,7 +115,7 @@
       width: 60%;
       min-width: 35px;
       height: 5px;
-      background-color: global.$main-color;
+      background-color: var(--accent-primary);
       position: absolute;
       left: 0;
       bottom: 0;
@@ -138,7 +137,7 @@
       display: block;
       width: 4px;
       height: 100%;
-      background-color: global.$main-color;
+      background-color: var(--accent-primary);
       position: absolute;
       left: 0;
       top: 0;
@@ -161,7 +160,7 @@
       display: block;
       width: 60%;
       height: 4px;
-      background-color: global.$sub-color-03;
+      background-color: var(--accent-primary);
       position: absolute;
       left: 0;
       bottom: 0;
@@ -189,11 +188,7 @@
       display: block;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(
-        to right,
-        global.$sub-color-03,
-        transparent
-      ); // 修正
+      background-color: var(--bg-sub);
       position: absolute;
       left: 0;
       top: 0;
@@ -220,7 +215,7 @@
       clip-path: polygon(0 0, 0% 100%, 62% 50%);
       width: 1.5rem;
       height: 80%;
-      background-color: global.$sub-color-03;
+      background-color: var(--accent-primary);
       position: absolute;
       left: 0;
       top: 50%;

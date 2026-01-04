@@ -14,19 +14,17 @@
   .author,
   .post-works-archive {
     // マイナスの値でマーカーのようにも使える
-      text-decoration-line: underline;
-      text-decoration-thickness: 2.3px;
-      text-underline-offset: 3px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2.3px;
+    text-underline-offset: 3px;
   }
 }
 
 .breadcrumb span {
   font-size: 1rem;
-  color: global.$main-color;
+  color: var(--text-main);
   font-weight: 700;
 }
-
-
 
 .breadcrumb .current-item {
 }

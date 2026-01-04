@@ -12,7 +12,7 @@
 }
 
 .lists-works-item {
-  background-color: global.$base-color;
+  background-color: var(--bg-sub);
   border-radius: 12px;
   overflow: hidden;
   // box-shadow: <水平方向の影の位置> <垂直方向の影の位置> <ぼかしの半径> <広がりの半径> <色> <inset>;
@@ -54,39 +54,35 @@
 }
 
 .lists-works-item-title {
-  color: global.$main-color;
+  color: var(--text-main);
   font-size: 1.2em;
   font-weight: 700;
 }
 
 .lists-works-item-excerpt {
-  font-family: global.$ff-noto;
+  // font-family: global.$ff-noto;
 }
-
 
 // 追加直リンクボタン
 .works-list__link-btn-wrap {
-padding-inline: 16px;
-font-family: global.$ff-noto;
-padding-block: 1rem;
-border-top: 3px solid global.$sub-color-03;
-// background-color: global.$sub-color-03;
+  padding-inline: 16px;
+  // font-family: global.$ff-noto;
+  padding-block: 1rem;
+  border-top: 3px solid var(--bg-sub);
+  // background-color: var(--bg-sub);
 }
 
-
-
 .works-list__link-btn {
-color: global.$main-color;
-font-size: 1.2rem;
-font-weight: 700;
-text-decoration: underline;
-transition: all 0.3s ease;
-// マイナスの値でマーカーのようにも使える
+  color: var(--text-main);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+  // マイナスの値でマーカーのようにも使える
   text-decoration-thickness: 3px;
   text-underline-offset: 3px;
 
-&:hover {
-  color: global.$accent-color;
-};
+  &:hover {
+    color: var(--accent-primary);
+  }
 }
-

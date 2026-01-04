@@ -22,7 +22,7 @@
 }
 
 .lists-posts-item {
-  background-color: global.$base-color;
+  background-color: var(--bg-sub);
   border-radius: 12px;
   overflow: hidden;
   // box-shadow: <水平方向の影の位置> <垂直方向の影の位置> <ぼかしの半径> <広がりの半径> <色> <inset>;
@@ -64,12 +64,12 @@
 }
 
 .lists-posts-item-title {
-  color: global.$main-color;
+  color: var(--text-main);
   font-size: 1.2em;
   font-weight: 700;
 }
 
 .lists-posts-item-excerpt {
   margin-top: 1em;
-  font-family: global.$ff-noto;
+  // font-family: global.$ff-noto;
 }

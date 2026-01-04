@@ -29,7 +29,7 @@
 .contact-thanks-title {
   font-size: 1.2em;
   font-weight: 700;
-  color: global.$accent-color;
+  color: var(--accent-primary);
   margin-top: 2em;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .contact-thanks-x-link {
-  color: global.$main-color;
+  color: var(--text-main);
   text-decoration: underline;
   font-weight: 700;
 }
@@ -50,7 +50,7 @@
 }
 
 .back-to-home-contact-thanks-link {
-  color: global.$main-color;
+  color: var(--text-main);
   text-decoration: underline;
   font-weight: 700;
 }

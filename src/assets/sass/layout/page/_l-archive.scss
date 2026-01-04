@@ -28,7 +28,7 @@
 }
 
 .archive-item {
-  background-color: global.$base-color;
+  background-color: var(--bg-sub);
   border-radius: 12px;
   overflow: hidden;
   // box-shadow: <水平方向の影の位置> <垂直方向の影の位置> <ぼかしの半径> <広がりの半径> <色> <inset>;
@@ -67,10 +67,10 @@
 .archive-item-title {
   font-size: 1.2em;
   font-weight: 700;
-  color: global.$main-color;
+  color: var(--text-main);
 }
 
 .archive-item-excerpt {
   margin-top: 0.5em;
-  font-family: global.$ff-noto;
+  // font-family: global.$ff-noto;
 }

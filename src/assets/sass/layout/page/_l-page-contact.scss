@@ -6,7 +6,7 @@
 }
 
 .contact-form {
-  background-color: global.$base-color;
+  background-color: var(--bg-sub);
   width: 95vw;
   max-width: 500px;
   margin-inline: auto;
@@ -22,12 +22,12 @@
 }
 
 .contact-label {
-  color: global.$sub-color-01;
+  color: var(--text-main);
   font-weight: 700;
 }
 
 .contact-required {
-  color: global.$accent-color;
+  color: var(--accent-primary);
   margin-left: 0.5em;
   font-weight: 700;
 }
@@ -38,10 +38,10 @@
   width: 95%;
   max-width: 400px;
   border: none;
-  font-family: global.$ff-noto;
+  font-family: var(--font-code);
 
   &:hover {
-    outline: 3px solid global.$accent-color;
+    outline: 1px solid var(--accent-primary);
   }
 }
 
@@ -50,8 +50,8 @@
 }
 
 .contact-main input[type="submit"] {
-  background-color: global.$sub-color-01;
-  color: global.$text-color-white;
+  background-color: var(--text-main);
+  color: var(--bg-deep);
   border: none;
   padding: 10px 20px;
   margin-top: 20px;
@@ -59,12 +59,13 @@
   margin-inline: auto;
   display: inline-block;
   transition: all 0.3s ease;
-  border: 5px solid global.$main-color;
+  border: 1px solid var(--text-main);
 
   &:hover {
     opacity: 0.8;
-    border: 5px solid global.$accent-color;
-    // color: global.$accent-color;
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: transparent;
   }
 }
 
@@ -83,19 +84,19 @@
 
 .contact-privacy {
   margin-top: 2rem;
-  font-family: global.$ff-noto;
+  font-family: var(--font-code);
   font-weight: 700;
 
   .privacy-link {
     font-weight: 700;
     text-decoration: underline;
-    color: global.$main-color;
+    color: var(--text-main);
     text-underline-offset: 3px;
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
 
     &:hover {
-      color: global.$accent-color;
+      color: var(--accent-primary);
     }
   }
 }

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+        <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -11,349 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-
-
-    
-
-        /* --- Hero Section --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 120px;
-            padding-bottom: 80px;
-            position: relative;
-            background-image: 
-                linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.4), rgba(5,5,5,0.9)),
-                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            width: 100%;
-            z-index: 1;
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            background: rgba(0, 242, 255, 0.1);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            border-radius: 100px;
-            font-family: var(--font-code);
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            margin-bottom: 24px;
-            backdrop-filter: blur(4px);
-        }
-        .status-dot { width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%; box-shadow: 0 0 10px var(--accent-primary); }
-
-        .hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            font-weight: 700;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        
-        .hero-accent {
-            color: var(--accent-primary);
-            display: inline-block;
-            transform: translateY(-0.2em);
-        }
-        
-        /* Title Shine Animation */
-        .text-gradient {
-            display: inline-block;
-            background: linear-gradient(
-                120deg,
-                #b3b3b3 0%,
-                #b3b3b3 40%,
-                #ffffff 50%,
-                #b3b3b3 60%,
-                #b3b3b3 100%
-            );
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
-            padding-bottom: 0.2em; /* Fix descender clipping */
-        }
-        @keyframes shine {
-            0% { background-position: 100% 0; }
-            100% { background-position: -100% 0; }
-        }
-
-        .hero p {
-            color: var(--text-main);
-            font-size: 1.1rem;
-            max-width: 500px;
-            margin-bottom: 40px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-        }
-        
-        /* Hero CTA Button */
-        .btn-hero {
-            display: inline-block;
-            padding: 14px 32px;
-            background: var(--text-main);
-            color: var(--bg-deep);
-            border: 1px solid var(--text-main);
-            border-radius: 4px;
-            font-weight: 600;
-            font-family: var(--font-code);
-            transition: all 0.3s ease;
-        }
-        .btn-hero:hover {
-            background: transparent;
-            color: var(--accent-primary);
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        /* --- Code Editor Component (Visual) --- */
-        .code-mockup {
-            background: rgba(13, 17, 23, 0.95);
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 0 0 1px rgba(0,0,0,0.3), 0 20px 50px rgba(0,0,0,0.5), 0 0 100px rgba(0, 242, 255, 0.1);
-            overflow: hidden;
-            font-family: var(--font-code);
-            font-size: 0.9rem;
-            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
-            transition: transform 0.5s ease;
-            backdrop-filter: blur(10px);
-        }
-        .code-mockup:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
-        
-        .mockup-header {
-            background: rgba(22, 27, 34, 0.9);
-            padding: 12px 16px;
-            display: flex; gap: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dot-r { background: #ff5f56; }
-        .dot-y { background: #ffbd2e; }
-        .dot-g { background: #27c93f; }
-        
-        .mockup-body { padding: 24px; color: var(--text-main); }
-        
-        /* Syntax Highlighting */
-        .line { display: flex; margin-bottom: 4px; line-height: 1.5; }
-        .ln { 
-            flex-shrink: 0; width: 30px; text-align: right; 
-            margin-right: 15px; color: #64748b; user-select: none; 
-        }
-        .code-text { flex-grow: 1; overflow-wrap: break-word; word-wrap: break-word; }
-        .indent-1 { padding-left: 1.2rem; }
-        .indent-2 { padding-left: 2.4rem; }
-        
-        .k { color: #ff79c6; } /* Keyword */
-        .f { color: #8be9fd; } /* Function */
-        .s { color: #f1fa8c; } /* String */
-        .c { color: #6272a4; font-style: italic; } /* Comment */
-        
-        .cursor {
-            display: inline-block; width: 8px; height: 1.2em;
-            background: var(--accent-primary);
-            vertical-align: sub;
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink { 50% { opacity: 0; } }
-
-        /* --- Section Common Styles --- */
-        .section-padding { padding: 120px 0; }
-        
-        .section-header { margin-bottom: 60px; }
-        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; }
-        .section-subtitle { font-family: var(--font-code); color: var(--accent-primary); }
-
-        /* --- About Section --- */
-        .profile-grid { display: grid; grid-template-columns: 350px 1fr; gap: 60px; align-items: start; }
-        
-        /* Sticky Profile Image with Duotone Filter */
-        .profile-image-wrapper { position: relative; position: sticky; top: 120px; }
-        
-        .profile-img { 
-            width: 100%; 
-            border-radius: 12px; 
-            filter: grayscale(100%) contrast(1.1) brightness(0.95);
-            transition: 0.5s ease; 
-            position: relative; 
-            z-index: 2; 
-        }
-        .profile-img:hover { 
-            filter: grayscale(0%) contrast(1) brightness(1); 
-        }
-
-        .profile-border {
-            position: absolute; top: 20px; left: 20px; width: 100%; height: 100%;
-            border: 2px solid var(--accent-primary); border-radius: 12px; z-index: 1; transition: 0.3s;
-        }
-        .profile-image-wrapper:hover .profile-border { top: 10px; left: 10px; }
-        
-        .profile-content { display: flex; flex-direction: column; gap: 30px; }
-        .profile-text h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: var(--text-main); }
-        .profile-text p { margin-bottom: 24px; color: var(--text-muted); }
-        
-        /* Skill Tags */
-        .skill-label { 
-            font-family: var(--font-code); font-size: 0.85rem; color: var(--text-muted); 
-            margin-bottom: 12px; display: flex; align-items: center; gap: 8px; 
-        }
-        .skill-label::before { content: '>'; color: var(--accent-primary); font-weight: bold; }
-        .label-learning::before { color: var(--accent-success); }
-        
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 12px; }
-        
-        .skill-tag {
-            padding: 6px 16px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 4px;
-            font-family: var(--font-code);
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            transition: 0.3s ease;
-            cursor: default;
-        }
-        .skill-tag:hover {
-            background: rgba(0, 242, 255, 0.1);
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
-            border-color: var(--accent-primary);
-            color: #fff;
-        }
-        
-        .tag-learning { color: var(--accent-success); border-color: rgba(0, 255, 157, 0.2); }
-        .tag-learning:hover {
-            background: rgba(0, 255, 157, 0.1);
-            box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
-            border-color: var(--accent-success);
-        }
-
-        /* --- Works Section --- */
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 40px;
-        }
-
-        .work-card {
-            background: var(--bg-sub);
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.05);
-            overflow: hidden;
-            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
-        .work-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-
-        .card-image-wrapper { width: 100%; height: 220px; position: relative; overflow: hidden; }
-        .card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: grayscale(20%); }
-        .work-card:hover .card-image { transform: scale(1.05); filter: grayscale(0%); }
-        
-        .card-content { padding: 24px; }
-        .tech-stack { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-        .tech-pill {
-            font-family: var(--font-code); font-size: 0.75rem; padding: 4px 8px;
-            background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--text-muted);
-        }
-
-        .card-title {
-            font-size: 1.25rem; font-weight: 600; margin-bottom: 12px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        
-        .card-links {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            gap: 20px;
-        }
-        .text-link { 
-            color: var(--text-muted); 
-            transition: 0.3s; 
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: var(--font-code);
-            font-size: 0.85rem;
-        }
-        .text-link:hover { color: var(--accent-primary); }
-        .text-link svg { width: 16px; height: 16px; }
-        
-        .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6; }
-
-        /* --- Blog Section --- */
-        .blog-list { display: flex; flex-direction: column; gap: 16px; }
-        
-        .blog-item {
-            display: grid;
-            grid-template-columns: 140px 1fr auto;
-            align-items: center;
-            padding: 24px;
-            background: var(--bg-sub);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
-            transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .blog-item:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.03); transform: translateX(8px); }
-        
-        .blog-date { font-family: var(--font-code); color: var(--text-muted); font-size: 0.85rem; }
-        .blog-content { display: flex; flex-direction: column; gap: 4px; }
-        .blog-title { font-size: 1.1rem; font-weight: 600; color: var(--text-main); transition: 0.3s; }
-        .blog-item:hover .blog-title { color: var(--accent-primary); }
-        
-        .blog-tags { font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-code); display: flex; gap: 8px; }
-        .blog-tag::before { content: '#'; color: var(--accent-secondary); }
-        .blog-arrow { color: var(--accent-primary); opacity: 0; transform: translateX(-10px); transition: 0.3s; font-family: var(--font-code); }
-        .blog-item:hover .blog-arrow { opacity: 1; transform: translateX(0); }
-
-        .view-all-container { text-align: right; margin-top: 30px; }
-        .view-all-link {
-            font-family: var(--font-code); color: var(--text-main); font-size: 0.9rem;
-            display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
-        }
-        .view-all-link:hover { color: var(--accent-primary); gap: 12px; }
-
-        /* --- Contact Section --- */
-        .contact-content { text-align: center; max-width: 600px; margin: 0 auto; }
-        .contact-text { color: var(--text-muted); margin-bottom: 40px; }
-        
-        .btn-primary {
-            display: inline-block; padding: 18px 50px;
-            background: rgba(0, 242, 255, 0.05); color: var(--accent-primary);
-            border: 1px solid var(--accent-primary); border-radius: 4px;
-            font-family: var(--font-code); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.05em;
-            transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
-            position: relative; z-index: 1;
-        }
-        .btn-primary:hover {
-            background: var(--accent-primary); color: var(--bg-deep);
-            box-shadow: 0 0 50px rgba(0, 242, 255, 0.6); transform: translateY(-4px);
-        }
-
-        /* --- Footer --- */
-        footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 0; text-align: center; font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted); }
-
-        /* --- Animation Utilities --- */
-        .fade-in-up { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
-        .icon { width: 20px; height: 20px; stroke-width: 2; }
-        
         /* --- Responsive Design --- */
         
         /* Tablet / Small Laptop (1024px or less) */
@@ -431,9 +89,9 @@
             
             .works-grid { grid-template-columns: 1fr; }
 
-            .blog-item { grid-template-columns: 1fr; gap: 12px; }
-            .blog-date { font-size: 0.8rem; margin-bottom: 4px; }
-            .blog-arrow { display: none; }
+            .journal-item { grid-template-columns: 1fr; gap: 12px; }
+            .journal-date { font-size: 0.8rem; margin-bottom: 4px; }
+            .journal-arrow { display: none; }
             
             .section-title { font-size: 2rem; }
             .view-all-container { text-align: center; margin-top: 40px; }
@@ -453,7 +111,7 @@
             .hero-content,
             .profile-grid,
             .works-grid,
-            .blog-list,
+            .journal-list,
             .contact-content {
                 max-width: 70%;
                 margin-left: auto;
@@ -480,7 +138,7 @@
             <ul>
                 <li><a href="#about">01. About</a></li>
                 <li><a href="#works">02. Works</a></li>
-                <li><a href="#blog">03. Blog</a></li>
+                <li><a href="#journal">03. Journal</a></li>
                 <li><a href="#contact">04. Contact</a></li>
                 <li>
                     <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="icon-only" aria-label="X (Twitter)">
@@ -505,7 +163,7 @@
         <ul>
             <li><a href="#about" class="mobile-link">01. About</a></li>
             <li><a href="#works" class="mobile-link">02. Works</a></li>
-            <li><a href="#blog" class="mobile-link">03. Blog</a></li>
+            <li><a href="#journal" class="mobile-link">03. Journal</a></li>
             <li><a href="#contact" class="mobile-link">04. Contact</a></li>
             <li>
                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="mobile-link" style="display:inline-flex; align-items:center; gap:10px;">
@@ -801,8 +459,8 @@
             </div>
         </section>
 
-        <!-- Blog Section -->
-        <section id="blog" class="section-padding">
+        <!-- Journal Section -->
+        <section id="journal" class="section-padding">
             <div class="container">
                 <div class="section-header fade-in-up">
                     <span class="section-subtitle">03. Insights</span>
@@ -810,35 +468,35 @@
                     <div style="width: 60px; height: 4px; background: var(--accent-primary); border-radius: 2px;"></div>
                 </div>
 
-                <div class="blog-list">
-                    <a href="#" class="blog-item fade-in-up">
-                        <span class="blog-date">2024.12.15</span>
-                        <div class="blog-content">
-                            <h3 class="blog-title">今週の学習記録：Next.jsのレンダリングについて</h3>
-                            <div class="blog-tags"><span class="blog-tag">Study</span><span class="blog-tag">Next.js</span></div>
+                <div class="journal-list">
+                    <a href="#" class="journal-item fade-in-up">
+                        <span class="journal-date">2024.12.15</span>
+                        <div class="journal-content">
+                            <h3 class="journal-title">今週の学習記録：Next.jsのレンダリングについて</h3>
+                            <div class="journal-tags"><span class="journal-tag">Study</span><span class="journal-tag">Next.js</span></div>
                         </div>
-                        <div class="blog-arrow">read.md -></div>
+                        <div class="journal-arrow">read.md -></div>
                     </a>
-                    <a href="#" class="blog-item fade-in-up" style="transition-delay: 0.1s">
-                        <span class="blog-date">2024.11.28</span>
-                        <div class="blog-content">
-                            <h3 class="blog-title">デスク環境をアップデートしました</h3>
-                            <div class="blog-tags"><span class="blog-tag">Life</span><span class="blog-tag">Gadget</span></div>
+                    <a href="#" class="journal-item fade-in-up" style="transition-delay: 0.1s">
+                        <span class="journal-date">2024.11.28</span>
+                        <div class="journal-content">
+                            <h3 class="journal-title">デスク環境をアップデートしました</h3>
+                            <div class="journal-tags"><span class="journal-tag">Life</span><span class="journal-tag">Gadget</span></div>
                         </div>
-                        <div class="blog-arrow">read.md -></div>
+                        <div class="journal-arrow">read.md -></div>
                     </a>
-                    <a href="#" class="blog-item fade-in-up" style="transition-delay: 0.2s">
-                        <span class="blog-date">2024.11.10</span>
-                        <div class="blog-content">
-                            <h3 class="blog-title">11月の振り返りと来月の目標</h3>
-                            <div class="blog-tags"><span class="blog-tag">Log</span><span class="blog-tag">Goal</span></div>
+                    <a href="#" class="journal-item fade-in-up" style="transition-delay: 0.2s">
+                        <span class="journal-date">2024.11.10</span>
+                        <div class="journal-content">
+                            <h3 class="journal-title">11月の振り返りと来月の目標</h3>
+                            <div class="journal-tags"><span class="journal-tag">Log</span><span class="journal-tag">Goal</span></div>
                         </div>
-                        <div class="blog-arrow">read.md -></div>
+                        <div class="journal-arrow">read.md -></div>
                     </a>
                 </div>
                 
                 <div class="view-all-container fade-in-up">
-                    <a href="blog.html" class="view-all-link">View All Articles -></a>
+                    <a href="journal.html" class="view-all-link">View All Articles -></a>
                 </div>
             </div>
         </section>
@@ -862,8 +520,12 @@
 
     <!-- Footer -->
     <footer>
-        <p>Designed & Built by Shu</p>
-        <p style="opacity: 0.5; margin-top: 5px;">© 2026 Portfolio</p>
+        <p class="footer-credit">Designed & Built by Shu</p>
+        <div class="footer-bottom">
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            <span class="footer-separator">|</span>
+            <span>© 2026 Portfolio</span>
+        </div>
     </footer>
 
     <script>
@@ -883,6 +545,7 @@
             }
         });
 
+        // Close mobile menu on link click
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');

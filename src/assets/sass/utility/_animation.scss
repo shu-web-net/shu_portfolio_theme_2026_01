@@ -1,0 +1,15 @@
+/* --- Animation Utilities --- */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}

@@ -12,55 +12,23 @@ add_action("after_setup_theme", "my_theme_setup");
 
 
 
-
-// style、scriptの読み込み
-// index.phpのhead内に、pp wp_head(); を記述
-// footer.phpのbody末尾に、pp wp_footer(); を記述
-// マップとか不要なのは消す
 function my_script_init()
 {
   // 外部ライブラリ（CDN）
-  // 1. Font Awesome
   $font_awesome_url = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
   wp_enqueue_style("font-awesome", $font_awesome_url, array(), "6.5.1", "all");
-  // 2. Swiper CSS
-  wp_enqueue_style("swiper-css", "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", array(), "11", "all"); // ハンドル名を変更 (swiper-jsと区別)
 
   // Webフォント
-  // 3. Google Fonts
-  $google_fonts_url = 'https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Noto+Sans+JP:wght@100..900&display=swap';
+  $google_fonts_url = 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap';
   wp_enqueue_style('google-fonts', $google_fonts_url, array(), null);
-  // 4. Typekit (Adobe Fonts) - コメントアウトされている
 
   // テーマのスタイルシート
-  // 5. テーマのstyle.css
-  wp_enqueue_style("my-style", get_template_directory_uri() . "/assets/css/style.css", array(), filemtime(get_theme_file_path("assets/css/style.css")), "all"); // ハンドル名を変更 (my-scriptと区別)
+  wp_enqueue_style("my-style", get_template_directory_uri() . "/assets/css/style.css", array(), filemtime(get_theme_file_path("assets/css/style.css")), "all");
 
   // JavaScript
-  // 6. Swiper JS (CDN) - ここで読み込むように変更
-  wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11', true); // 依存なし, バージョン11, フッター読み込み
-
-  // 7. テーマのscript.js (jQuery と Swiper JS に依存) - 依存関係に 'swiper-js' を追加
-  wp_enqueue_script('my-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery', 'swiper-js'), filemtime(get_theme_file_path("assets/js/script.js")), true); // ハンドル名を変更, 依存関係に swiper-js を追加
+  wp_enqueue_script('my-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), filemtime(get_theme_file_path("assets/js/script.js")), true);
 }
 add_action("wp_enqueue_scripts", "my_script_init");
-
-// nameとidは他と重複しなければ何でも設定可能
-// function my_widget_init()
-// {
-//   register_sidebar(
-//     array(
-//       "name" => "サイドバー",
-//       "id" => "sidebar",
-//       "description" => "サイドバーのウィジェットエリアです。",
-//       "before_widget" => '<div id="%1s" class="widget %2s">',
-//       "after_widget" => "</div>",
-//       "before_title" => '<div class="widget-title">',
-//       "after_title" => "</div>"
-//     )
-//   );
-// }
-// add_action("widgets_init", "my_widget_init");
 
 // archiveページの有効化
 function post_has_archive($args, $post_type)
@@ -88,14 +56,10 @@ add_filter('auto_plugin_update_send_email', '__return_false');
 add_filter('auto_theme_update_send_email', '__return_false');
 
 // 下記はWordPressコアの自動更新に関するメールを停止します。
-// セキュリティ更新の通知も含まれるため、無効化する際はご注意ください。
 // add_filter('auto_core_update_send_email', '__return_false');
 
 /**
- * カスタムフィールドから取得したURLのドメイン部分を、現在のサイトのドメインに動的に置き換えます。
- *
- * 開発環境で入力したURLを本番環境で自動的に正しいURLに変換する際などに使用します。
- * 例: 'http://localhost/sample' -> 'https://example.com/sample'
+ * カスタムフィールドから取得したURLのドメイン部分を、現在のサイトのドメインに動的に置き換え *
  *
  * @param string $field_name カスタムフィールド名。
  * @param int|false $post_id 投稿ID。省略した場合は現在の投稿から取得します。
@@ -126,6 +90,12 @@ function setPostViews($postID)
   if (!$postID) {
     return;
   }
+
+  // ボットならカウントしない
+  if (is_bot()) {
+    return;
+  }
+
   $count_key = 'post_views_count';
   $count = get_post_meta($postID, $count_key, true);
 

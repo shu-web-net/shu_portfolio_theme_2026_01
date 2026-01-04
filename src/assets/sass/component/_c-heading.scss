@@ -2,7 +2,7 @@
 
 .heading-container,
 .heading-link {
-  background-color: global.$sub-color-01;
+  background-color: var(--bg-sub);
   display: inline-flex;
   justify-content: space-between;
   // align-items: center;
@@ -18,16 +18,16 @@
 .heading-link {
   transition: all 0.3s ease;
   &:hover {
-    background-color: global.$sub-color-03;
+    background-color: var(--bg-sub);
 
     .heading {
-      color: global.$accent-color;
+      color: var(--accent-primary);
     }
   }
 }
 
 .heading {
-  color: global.$text-color-white;
+  color: var(--text-main);
   font-size: 1.5em;
 }
 
@@ -38,7 +38,7 @@
   content: "";
   width: 50%;
   height: 2px;
-  background-color: global.$text-color-white;
+  background-color: var(--text-main);
 }
 
 .heading-jp {

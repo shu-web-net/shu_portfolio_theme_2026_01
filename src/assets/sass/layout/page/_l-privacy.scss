@@ -23,17 +23,16 @@
     margin-top: 1em;
     // width: 95vw;
     margin-inline: auto;
-    font-family: global.$ff-noto;
   }
 
   & a {
-    color: global.$main-color;
+    color: var(--text-main);
     font-weight: 700;
     text-decoration: underline;
     transition: color 0.3s;
 
     &:hover {
-      color: global.$accent-color;
+      color: var(--accent-primary);
     }
   }
 
@@ -63,7 +62,7 @@
       display: block;
       width: 4px;
       height: 100%;
-      background-color: global.$main-color;
+      background-color: var(--accent-primary);
       position: absolute;
       left: 0;
       top: 0;

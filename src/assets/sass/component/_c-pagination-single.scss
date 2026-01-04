@@ -20,7 +20,7 @@
   padding-top: 0.2rem;
   padding-bottom: 0.3rem;
   border-radius: 8px;
-  color: global.$text-color-white;
+  color: var(--text-main);
   font-weight: 700;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -32,20 +32,20 @@
 
   &:hover {
     opacity: 0.7;
-    color: global.$accent-color;
+    color: var(--accent-primary);
   }
 }
 .pagination-single-prev {
-  background-color: global.$sub-color-03;
+  background-color: var(--bg-sub);
 }
 
 .u-sp-hide {
 }
 
 .pagination-single-list {
-  background-color: global.$sub-color-01;
+  background-color: var(--bg-sub);
 }
 
 .pagination-single-next {
-  background-color: global.$sub-color-03;
+  background-color: var(--bg-sub);
 }

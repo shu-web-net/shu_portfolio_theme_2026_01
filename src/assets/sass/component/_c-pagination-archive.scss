@@ -9,12 +9,11 @@
   a {
     transition: all 0.3s ease;
     &:hover {
-      color: global.$accent-color;
+      color: var(--accent-primary);
       opacity: 0.7;
     }
   }
 }
-
 
 .page-numbers {
   width: 2.5rem;
@@ -22,28 +21,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: global.$text-color-white;
-  background-color: global.$sub-color-03;
+  color: var(--text-main);
+  background-color: var(--bg-sub);
   border-radius: 50%;
   font-weight: 700;
- &.current {
-  color: global.$main-color;
-  
- }
+  &.current {
+    color: var(--accent-primary);
+  }
 }
 
-
-
-
 .fas {
-
 }
 
 .fa-angles-left {
-
 }
 
 .fa-angles-right {
-
 }
-

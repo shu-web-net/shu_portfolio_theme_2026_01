@@ -20,10 +20,7 @@
 </head>
 
 <body>
-  <!-- htmlに記述。WordPressのツールバーの位置調節 -->
   <!-- ツールバー表示時に上部にマージン追加してツールバーとかぶるの予防 -->
-  <!-- コンテンツ全体にはツールバー表示時自動でマージントップ当たるので、fixedのheaderだけ下にずらせばOK -->
-  <!-- headerがfixedでなければ、そもそもこのコード必要なし -->
   <?php if (is_admin_bar_showing()) : ?>
     <style type="text/css">
       .header {

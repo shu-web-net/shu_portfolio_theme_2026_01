@@ -5,32 +5,38 @@ html {
   height: 100%; /* html要素の高さを100%に */
 }
 
-body {
-  display: flex; /* bodyをFlexコンテナに */
-  flex-direction: column; /* 子要素を縦方向に並べる */
-  min-height: 100vh; /* bodyの最小の高さをビューポート（画面表示領域）の100%に */
-  margin: 0; /* bodyのデフォルトマージンをリセット */
+/* --- Global Reset & Base Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-main {
-  flex-grow: 1;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Header offset */
 }
 
-// ベーススタイル
-
 body {
-  color: global.$text-color-black;
-  font-family: global.$ff-base;
-  font-size: global.$fs-base;
-  font-weight: global.$fw-base;
-  line-height: global.$lh-base;
+  font-family: var(--font-jp);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
 }
 
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 a {
+  text-decoration: none;
   color: inherit;
+  transition: 0.3s;
+}
+ul {
+  list-style: none;
 }

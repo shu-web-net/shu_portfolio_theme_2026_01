@@ -1,0 +1,61 @@
+/* --- Works Section --- */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+            }
+            @media (min-width: 600px) and (max-width: 768px) {
+                max-width: 70%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .work-card {
+            background: var(--bg-sub);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+        .work-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        .card-image-wrapper { width: 100%; height: 220px; position: relative; overflow: hidden; }
+        .card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: grayscale(20%); }
+        .work-card:hover .card-image { transform: scale(1.05); filter: grayscale(0%); }
+        
+        .card-content { padding: 24px; }
+        .tech-stack { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .tech-pill {
+            font-family: var(--font-code); font-size: 0.75rem; padding: 4px 8px;
+            background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--text-muted);
+        }
+
+        .card-title {
+            font-size: 1.25rem; font-weight: 600; margin-bottom: 12px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        
+        .card-links {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            gap: 20px;
+        }
+        .text-link { 
+            color: var(--text-muted); 
+            transition: 0.3s; 
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+        }
+        .text-link:hover { color: var(--accent-primary); }
+        .text-link svg { width: 16px; height: 16px; }
+        
+        .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6; }

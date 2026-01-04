@@ -1,11 +1,7 @@
     <!-- Footer -->
-    <footer>
-      <p class="footer-credit">Designed & Built by Shu</p>
-      <div class="footer-bottom">
-        <a href="privacy.html" class="footer-link">Privacy Policy</a>
-        <span class="footer-separator">|</span>
-        <span>© 2026 Portfolio</span>
-      </div>
+    <footer class="footer">
+      <p>Designed & Built by Shu</p>
+      <p style="opacity: 0.5; margin-top: 5px;">© 2026 Portfolio</p>
     </footer>
 
 

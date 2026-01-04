@@ -1,0 +1,34 @@
+# --- OS・システム系（不要な自動生成ファイル） ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# --- エディタ・IDE設定（個人の設定は共有しない） ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# --- パッケージ管理（npm/yarnを使う場合） ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- ビルド生成物（Sassやバンドルツールを使う場合） ---
+
+# --- 機密情報（APIキーなど） ---
+.env
+.env.local
+.env.*.local
+
+# --- その他 ---
+# 一時ファイルなど
+*.log
+.firebase/

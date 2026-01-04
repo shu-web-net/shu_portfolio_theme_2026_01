@@ -9,7 +9,7 @@
         Webサイト制作、LP実装、コーディング代行など、<br>
         お気軽にご連絡ください。
       </p>
-      <a href="mailto:hello@example.com" class="btn btn--primary">Say Hello!</a>
+      <a href="<?php echo home_url("/contact/"); ?>" class="btn btn--primary">Say Hello!</a>
     </div>
   </div>
 </section>

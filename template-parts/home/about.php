@@ -1,20 +1,20 @@
 <!-- About Section -->
-<section id="about" class="section-padding">
-  <div class="container">
-    <div class="section-header fade-in-up">
-      <span class="section-subtitle">01. About Me</span>
-      <h2 class="section-title">Who I Am</h2>
+<section id="about" class="section">
+  <div class="l-container">
+    <div class="section__header u-fade-in-up">
+      <span class="section__subtitle">01. About Me</span>
+      <h2 class="section__title">Who I Am</h2>
       <div style="width: 60px; height: 4px; background: var(--accent-primary); border-radius: 2px;"></div>
     </div>
 
-    <div class="profile-grid">
-      <div class="profile-image-wrapper fade-in-up">
-        <img src="プロフィール画像スタイリッシュ.webp" alt="Profile" class="profile-img">
-        <div class="profile-border"></div>
+    <div class="about__grid">
+      <div class="about__image-wrapper u-fade-in-up">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/img/profile/プロフィール画像スタイリッシュ.webp" alt="Profile" class="about__image" width="2048" height="2048">
+        <div class="about__image-border"></div>
       </div>
 
-      <div class="profile-content fade-in-up" style="transition-delay: 0.1s">
-        <div class="profile-text">
+      <div class="about__content u-fade-in-up" style="transition-delay: 0.1s">
+        <div class="about__text">
           <h3>
             デザインとエンジニアリングの<br>
             <span style="color: var(--accent-primary);">架け橋</span>になります。
@@ -40,8 +40,8 @@
 
         <!-- Skill Groups -->
         <div class="skill-group">
-          <div class="skill-label">Main Stack</div>
-          <div class="skill-tags">
+          <div class="skill-group__label">Main Stack</div>
+          <div class="skill-group__tags">
             <span class="skill-tag">HTML5 / CSS3</span>
             <span class="skill-tag">JavaScript (ES6+)</span>
             <span class="skill-tag">WordPress</span>
@@ -52,12 +52,12 @@
         </div>
 
         <div class="skill-group">
-          <div class="skill-label label-learning">Installing...</div>
-          <div class="skill-tags">
-            <span class="skill-tag tag-learning">React</span>
-            <span class="skill-tag tag-learning">Next.js</span>
-            <span class="skill-tag tag-learning">TypeScript</span>
-            <span class="skill-tag tag-learning">Tailwind CSS</span>
+          <div class="skill-group__label skill-group__label--learning">Installing...</div>
+          <div class="skill-group__tags">
+            <span class="skill-tag skill-tag--learning">React</span>
+            <span class="skill-tag skill-tag--learning">Next.js</span>
+            <span class="skill-tag skill-tag--learning">TypeScript</span>
+            <span class="skill-tag skill-tag--learning">Tailwind CSS</span>
           </div>
         </div>
       </div>

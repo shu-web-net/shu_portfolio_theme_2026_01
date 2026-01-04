@@ -1,10 +1,13 @@
-    /* --- Common Layout Components --- */
+/* --- Common Layout Components (Block: l-container) --- */
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin-inline: auto;
-            padding-inline: 40px;
-        }
-
-        
+.l-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 40px;
+}
+@media (max-width: 768px) {
+  .l-container {
+    padding-inline: 20px;
+  }
+}

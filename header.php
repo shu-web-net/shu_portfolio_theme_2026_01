@@ -49,25 +49,25 @@
   <!-- ヘッダー -->
 
   <!-- Background Elements -->
-  <div class="noise-overlay"></div>
-  <div class="grid-bg"></div>
-  <div class="glow-spot glow-1"></div>
-  <div class="glow-spot glow-2"></div>
+  <div class="bg-effect__noise"></div>
+  <div class="bg-effect__grid"></div>
+  <div class="bg-glow bg-glow--primary"></div>
+  <div class="bg-glow bg-glow--secondary"></div>
 
-  <header>
-    <div class="logo">
-      <span style="color:var(--text-muted)">~/</span>Shu<span style="color:var(--accent-primary)">_Portfolio</span>
+  <header class="header">
+    <div class="header__logo">
+      <span class="header__logo-sub">~/</span>Shu<span class="header__logo-accent">_Portfolio</span>
     </div>
 
     <!-- Desktop Nav -->
-    <nav class="desktop-nav">
-      <ul>
-        <li><a href="#about">01. About</a></li>
-        <li><a href="#works">02. Works</a></li>
-        <li><a href="#journal">03. Journal</a></li>
-        <li><a href="#contact">04. Contact</a></li>
+    <nav class="nav-desktop">
+      <ul class="nav-desktop__list">
+        <li><a href="#about" class="nav-desktop__link">01. About</a></li>
+        <li><a href="#works" class="nav-desktop__link">02. Works</a></li>
+        <li><a href="#blog" class="nav-desktop__link">03. Blog</a></li>
+        <li><a href="#contact" class="nav-desktop__link">04. Contact</a></li>
         <li>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="icon-only" aria-label="X (Twitter)">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="nav-desktop__link nav-desktop__link--icon-only" aria-label="X (Twitter)">
             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px; margin-top: 2px;">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
             </svg>
@@ -78,21 +78,21 @@
 
     <!-- Hamburger Button -->
     <button class="hamburger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span class="hamburger__line"></span>
+      <span class="hamburger__line"></span>
+      <span class="hamburger__line"></span>
     </button>
   </header>
 
   <!-- Mobile Nav Overlay -->
-  <nav class="mobile-nav">
-    <ul>
-      <li><a href="#about" class="mobile-link">01. About</a></li>
-      <li><a href="#works" class="mobile-link">02. Works</a></li>
-      <li><a href="#journal" class="mobile-link">03. Journal</a></li>
-      <li><a href="#contact" class="mobile-link">04. Contact</a></li>
+  <nav class="nav-mobile">
+    <ul class="nav-mobile__list">
+      <li><a href="#about" class="nav-mobile__link">01. About</a></li>
+      <li><a href="#works" class="nav-mobile__link">02. Works</a></li>
+      <li><a href="#blog" class="nav-mobile__link">03. Blog</a></li>
+      <li><a href="#contact" class="nav-mobile__link">04. Contact</a></li>
       <li>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="mobile-link" style="display:inline-flex; align-items:center; gap:10px;">
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="nav-mobile__link" style="display:inline-flex; align-items:center; gap:10px;">
           Twitter
           <svg viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>

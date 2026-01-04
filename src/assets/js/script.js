@@ -1,24 +1,23 @@
 // Hamburger Menu Logic
 const hamburger = document.querySelector(".hamburger");
-const mobileNav = document.querySelector(".mobile-nav");
-const mobileLinks = document.querySelectorAll(".mobile-link");
+const mobileNav = document.querySelector(".nav-mobile");
+const mobileLinks = document.querySelectorAll(".nav-mobile__link");
 
 hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  mobileNav.classList.toggle("active");
+  hamburger.classList.toggle("hamburger--active");
+  mobileNav.classList.toggle("nav-mobile--active");
 
-  if (mobileNav.classList.contains("active")) {
+  if (mobileNav.classList.contains("nav-mobile--active")) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "";
   }
 });
 
-// Close mobile menu on link click
 mobileLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    mobileNav.classList.remove("active");
+    hamburger.classList.remove("hamburger--active");
+    mobileNav.classList.remove("nav-mobile--active");
     document.body.style.overflow = "";
   });
 });
@@ -28,7 +27,7 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
+        entry.target.classList.add("is-visible");
         observer.unobserve(entry.target);
       }
     });
@@ -36,4 +35,6 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 }
 );
 
-document.querySelectorAll(".fade-in-up").forEach((el) => observer.observe(el));
+document
+  .querySelectorAll(".u-fade-in-up")
+  .forEach((el) => observer.observe(el));

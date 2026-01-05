@@ -1,0 +1,347 @@
+@use "../../global/" as global;
+
+/* --- Local Variables (もしGlobalになければここで定義) --- */
+/* 
+:root {
+  --bg-deep: #050505;
+  --bg-sub: #111111;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent-primary: #00f2ff;
+  --accent-secondary: #7000ff;
+  --font-jp: 'Noto Sans JP', sans-serif;
+  --font-code: 'Fira Code', monospace;
+}
+*/
+
+.single {
+  padding-top: 140px;
+  padding-bottom: 120px;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  position: relative;
+  overflow: hidden;
+
+  /* 背景ノイズエフェクト（トップページと共通化推奨） */
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.single-inner {
+  width: 90%;
+  max-width: 840px;
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+
+  /* グラスモーフィズムカード */
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  @include global.mq(pc) {
+    padding: 60px;
+  }
+}
+
+/* --- タイトルエリア --- */
+.single-title {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+
+  /* グラデーションテキスト */
+  background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @include global.mq(pc) {
+    font-size: 2.2rem;
+  }
+}
+
+/* アイキャッチ画像 */
+.single-thumbnail {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-top: 30px;
+}
+
+.eye-catcher-copy-wrap {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 5px;
+  font-family: var(--font-code);
+  
+  a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.3s;
+    &:hover { color: var(--accent-primary); }
+  }
+}
+
+/* ステマ対策バッジ (System Alert風) */
+.stealth-marketing {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto 0;
+  font-size: 0.75rem;
+  font-family: var(--font-code);
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.4em 1.2em;
+  border-radius: 4px;
+
+  &::before {
+    content: "i";
+    display: inline-block;
+    width: 14px; height: 14px;
+    line-height: 14px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid var(--text-muted);
+    margin-right: 8px;
+    font-size: 10px;
+  }
+}
+
+/* --- 本文エリア (.single-body) --- */
+.single-body {
+  margin-top: 3rem;
+  line-height: 1.8;
+  font-size: 1rem;
+
+  @include global.mq(pc) {
+    font-size: 1.05rem;
+  }
+
+  /* テキストリンク */
+  a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.3);
+    transition: all 0.3s;
+
+    &:hover {
+      background: rgba(0, 242, 255, 0.1);
+      border-bottom-color: var(--accent-primary);
+      text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+    }
+  }
+
+  p {
+    margin-bottom: 2em;
+  }
+
+  /* --- 目次 (System Log風) --- */
+  #toc_container {
+    background: #0d1117; /* GitHub Dark Dimmed風 */
+    border: 1px solid var(--accent-primary);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin: 3rem auto;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.05);
+    position: relative;
+
+    /* タイトル "Contents" */
+    .toc_title {
+      font-family: var(--font-code);
+      color: var(--accent-primary);
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      display: block;
+      
+      &::before { content: "<"; margin-right: 0.5em; opacity: 0.5; }
+      &::after { content: " />"; margin-left: 0.5em; opacity: 0.5; }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 0.5em;
+      a {
+        color: var(--text-muted);
+        border: none;
+        font-size: 0.95rem;
+        transition: 0.2s;
+        text-decoration: none;
+        display: block;
+        padding: 4px 0;
+
+        &:hover {
+          color: var(--text-main);
+          transform: translateX(5px);
+        }
+      }
+    }
+    
+    /* 階層表現 */
+    ul ul {
+      margin-left: 1.5em;
+      margin-top: 0.5em;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 1em;
+    }
+  }
+
+  /* --- 見出し H2 (Neon Underline) --- */
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 4rem 0 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-primary);
+    position: relative;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 30%; /* 短い光るライン */
+      height: 2px;
+      background: #fff;
+      box-shadow: 0 0 10px var(--accent-primary);
+    }
+  }
+
+  /* --- 見出し H3 (Terminal Prompt) --- */
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 3.5rem 0 1.5rem;
+    padding-left: 1.2em;
+    position: relative;
+    font-family: var(--font-code); /* コードフォントで雰囲気を出す */
+
+    &::before {
+      content: ">";
+      position: absolute;
+      left: 0;
+      color: var(--accent-secondary);
+      font-weight: bold;
+    }
+  }
+
+  /* --- 見出し H4 (Left Border) --- */
+  h4 {
+    font-size: 1.2rem;
+    margin: 3rem 0 1.5rem;
+    padding-left: 1rem;
+    border-left: 4px solid var(--accent-success);
+    color: var(--text-main);
+  }
+
+  /* --- リスト (Custom Bullet) --- */
+  ul, ol {
+    margin-bottom: 2em;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 0.8em;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 6px;
+      height: 6px;
+      background: var(--accent-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-primary);
+    }
+  }
+
+  /* --- 引用 (Blockquote) --- */
+  blockquote {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--text-muted);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    color: var(--text-muted);
+    font-style: italic;
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* --- コードブロック (Gutenberg) --- */
+  .wp-block-code {
+    background: #1e1e1e; /* VS Code Dark風 */
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1.5em;
+    margin-bottom: 2em;
+    font-family: var(--font-code);
+    font-size: 0.9em;
+    overflow-x: auto;
+    
+    code {
+      background: transparent;
+      color: #ce9178; /* 文字色はシンタックスハイライト風 */
+    }
+  }
+  
+  /* インラインコード */
+  :not(pre) > code {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-success);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: var(--font-code);
+    font-size: 0.9em;
+  }
+
+  /* --- 画像・動画 --- */
+  .wp-block-image img,
+  .wp-block-video video,
+  .wp-block-embed__wrapper iframe {
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+  }
+
+  /* --- 区切り線 --- */
+  .wp-block-separator {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    margin: 3rem 0;
+    opacity: 0.5;
+  }
+}

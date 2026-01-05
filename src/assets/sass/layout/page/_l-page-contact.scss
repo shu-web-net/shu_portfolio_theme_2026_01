@@ -97,16 +97,19 @@
   margin-top: 40px;
 }
 .sns-link {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  /* width: 48px; height: 48px; */
+  padding: 10px 24px;
+  border-radius: 50px;
   background: rgba(255, 255, 255, 0.05);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: 0.3s;
   color: var(--text-muted);
+  font-family: var(--font-code);
+  font-size: 0.9rem;
 }
 .sns-link:hover {
   background: var(--accent-primary);

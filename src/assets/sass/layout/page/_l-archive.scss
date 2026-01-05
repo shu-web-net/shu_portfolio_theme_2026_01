@@ -1,5 +1,18 @@
 @use "../../global/" as global;
 
+/* --- Local Variables (Globalになければ有効化) --- */
+/*
+:root {
+  --bg-deep: #050505;
+  --bg-sub: #111111;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent-primary: #00f2ff;
+  --accent-secondary: #7000ff;
+  --font-code: 'Fira Code', monospace;
+}
+*/
+
 .archive-main {
   padding-top: 140px;
   padding-bottom: 120px;
@@ -154,6 +167,32 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+/* Tag Styles (Tech Pills) */
+.archive-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tech-pill {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: default;
+  transition: 0.3s;
+  
+  &:hover {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: var(--accent-primary);
+    color: #fff;
+  }
 }
 
 /* 記事タイトル */

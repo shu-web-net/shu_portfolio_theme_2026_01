@@ -1,0 +1,149 @@
+/* :root {
+  --accent-primary: #00f2ff;
+  --bg-sub: #111111;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --font-code: 'Fira Code', monospace;
+} */
+
+/* --- 検索フォームのスタイル --- */
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin: 2rem auto 4rem; /* 上下の余白 */
+  position: relative;
+  font-family: var(--font-code);
+
+  /* ラベル要素（inputのラッパーとして機能） */
+  label {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.search-field {
+  width: 100%;
+  padding: 14px 50px 14px 24px; /* 右側にボタン分の余白を確保 */
+  font-size: 1rem;
+  color: var(--text-main);
+  background: rgba(17, 17, 17, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px; /* 左右丸く */
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+  /* プレースホルダーの色 */
+  &::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+    font-size: 0.9rem;
+  }
+
+  /* フォーカス時（入力時） */
+  &:focus {
+    border-color: var(--accent-primary);
+    background: rgba(5, 5, 5, 0.9);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2), inset 0 0 10px rgba(0, 242, 255, 0.05);
+  }
+}
+
+/* 検索ボタン */
+.search-submit {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--accent-primary);
+  cursor: pointer;
+  transition: 0.3s;
+  
+  /* デフォルトの「検索」という文字を透明にして隠す */
+  font-size: 0; 
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 虫眼鏡アイコンをCSSで描画（あるいはSVG背景） */
+  &::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  &::after {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 8px;
+    background: currentColor;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    background: rgba(0, 242, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+  }
+}
+
+/* スクリーンリーダー用のテキストを非表示にする */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+/* --- 検索結果ページ（search.php等で使われるスタイル） --- */
+.search-results-header {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.search-results-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  
+  span {
+    color: var(--accent-primary);
+    font-family: var(--font-code);
+    padding: 0 0.2em;
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+  }
+}
+
+.search-results-not-founds {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 3rem;
+  font-size: 1.1rem;
+}

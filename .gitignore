@@ -32,3 +32,6 @@ yarn-error.log*
 # 一時ファイルなど
 *.log
 .firebase/
+assets/css/style.css
+src/assets/css/style.css
+.gitignore

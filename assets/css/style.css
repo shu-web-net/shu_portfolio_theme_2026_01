@@ -1492,17 +1492,10 @@ ul {
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	border-radius: 4px;
 	color: var(--text-muted);
-	cursor: default;
+	cursor: default; /* クリック不可であることを示す */
 	font-family: var(--font-code);
 	font-size: 0.75rem;
-	padding: 4px 8px;
-	transition: 0.3s;
-}
-
-.tech-pill:hover {
-	background: rgba(0, 242, 255, 0.1);
-	border-color: var(--accent-primary);
-	color: #fff;
+	padding: 4px 8px; /* ホバーエフェクトを削除したので、押せる誤解を防ぐ */
 }
 
 /* 記事タイトル */

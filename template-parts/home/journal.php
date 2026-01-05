@@ -47,7 +47,7 @@
     </div>
 
     <div class="journal__view-all u-fade-in-up">
-      <a href="blog.html" class="view-all-link">View All Articles -></a>
+      <a href="<?php echo home_url("/blog/"); ?>" class="view-all-link">View All Articles -></a>
     </div>
   </div>
 </section>

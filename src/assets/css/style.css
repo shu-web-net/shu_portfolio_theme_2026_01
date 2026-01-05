@@ -1261,44 +1261,116 @@ ul {
 	color: var(--accent-primary);
 }
 
-.pagination-single {
-	align-items: center;
-	display: flex;
-	gap: 1.2rem;
-	justify-content: center;
-	margin-top: 2.5rem;
+/* :root {
+  --accent-primary: #00f2ff;
+  --bg-sub: #111111;
+  --text-main: #e2e8f0;
+  --font-code: 'Fira Code', monospace;
 }
+*/
+
+.pagination-single {
+	align-items: stretch; /* 高さを揃える */
+	display: flex;
+	font-family: var(--font-code);
+	gap: 10px;
+	justify-content: space-between; /* 両端配置（一覧ボタンは中央へ） */
+	margin-top: 4rem;
+	width: 100%;
+}
+
+/* 共通ボタンスタイル */
 
 .pagination-single-prev,
 .pagination-single-list,
 .pagination-single-next {
-	border-radius: 8px;
-	color: var(--text-main);
-	font-size: 1rem;
-	font-weight: 700;
-	padding-bottom: 0.3rem;
-	padding-inline: 0.6rem;
-	padding-top: 0.2rem;
-	transition: all 0.3s ease;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	color: var(--text-muted);
+	display: flex;
+	font-size: 0.85rem;
+	justify-content: center;
+	line-height: 1.2;
+	padding: 12px 16px;
+	position: relative;
+	text-decoration: none;
+	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ホバー時 */
 }
 
 .pagination-single-prev:hover,
 .pagination-single-list:hover,
 .pagination-single-next:hover {
-	color: var(--accent-primary);
-	opacity: 0.7;
+	background: var(--accent-primary); /* 背景をシアンに */
+	border-color: var(--accent-primary);
+	box-shadow: 0 0 15px rgba(0, 242, 255, 0.4); /* グロー効果 */
+	color: var(--bg-deep); /* テキストを黒に */
+	opacity: 1;
+	transform: translateY(-2px); /* ホバー時の矢印などの色反転はtext color継承で対応 */
 }
+
+/* --- 前の記事へ --- */
 
 .pagination-single-prev {
-	background-color: var(--bg-sub);
+	margin-right: auto; /* 左寄せ */ /* アイコン "<" */
 }
 
-.pagination-single-list {
-	background-color: var(--bg-sub);
+.pagination-single-prev::before {
+	color: var(--accent-primary);
+	content: "<";
+	font-weight: bold;
+	margin-right: 8px;
+	transition: color 0.3s;
 }
+
+.pagination-single-prev:hover::before {
+	color: var(--bg-deep);
+}
+
+/* --- 次の記事へ --- */
 
 .pagination-single-next {
-	background-color: var(--bg-sub);
+	flex-direction: row-reverse; /* アイコンを右側に持ってくるため反転 */
+	margin-left: auto; /* 右寄せ */ /* アイコン ">" */
+}
+
+.pagination-single-next::before {
+	color: var(--accent-primary);
+	content: ">"; /* row-reverseしているのでbeforeが視覚的に右に来る */
+	font-weight: bold;
+	margin-left: 8px; /* reverseなのでmargin-leftが文字との間隔になる */
+	transition: color 0.3s;
+}
+
+.pagination-single-next:hover::before {
+	color: var(--bg-deep);
+}
+
+/* --- 記事一覧へ --- */
+
+.pagination-single-list { /* スマホではアイコンのみにするなどの調整も可能だが、今回は文字を表示 */
+	font-weight: 700;
+	letter-spacing: 0.05em; /* アイコン "///" (ディレクトリ階層イメージ) */
+}
+
+.pagination-single-list::before {
+	color: var(--accent-secondary); /* 紫などのサブカラー */
+	content: "///";
+	font-size: 0.7em;
+	letter-spacing: -2px;
+	margin-right: 8px;
+	transition: color 0.3s;
+}
+
+.pagination-single-list:hover::before {
+	color: var(--bg-deep);
+}
+
+/* スマホ表示時の微調整（テキストを隠すクラス用） */
+
+.u-sp-hide {
+	display: none;
 }
 
 .pagination-contents-wrap {
@@ -2237,14 +2309,20 @@ ul {
 }
 
 .pagination-single {
-	gap: 2.5rem;
+	gap: 20px;
+	justify-content: center;
 }
 
 .pagination-single-prev,
 .pagination-single-list,
 .pagination-single-next {
-	font-size: 1.5rem;
-	padding-inline: 0.9rem;
+	font-size: 0.9rem;
+	min-width: 140px;
+	padding: 14px 24px;
+}
+
+.u-sp-hide {
+	display: inline;
 }
 
 }

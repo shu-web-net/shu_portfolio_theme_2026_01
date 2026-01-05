@@ -3,18 +3,19 @@
 /* --- Works Section (Block: works) --- */
 .works__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 40px;
-
-  @include global.mq(pc) {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
 }
 @media (min-width: 600px) and (max-width: 768px) {
   .works__grid {
     max-width: 70%;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+@media (max-width: 768px) {
+  .works__grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -26,11 +27,13 @@
   overflow: hidden;
   transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .work-card:hover {
   transform: translateY(-8px);
-  border-color: var(--accent-primary); /* ボーダー色をアクセントカラーに変更 */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 242, 255, 0.3); /* グロー効果を追加 */
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 242, 255, 0.3);
 }
 
 .work-card__image-wrapper {
@@ -53,6 +56,9 @@
 
 .work-card__content {
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .work-card__tech-stack {
   display: flex;
@@ -80,43 +86,70 @@
   justify-content: space-between;
 }
 
-.work-card__links {
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex;
-  gap: 20px;
-}
-
-/* Text Link (Block: text-link) */
-.text-link {
-  color: var(--text-muted);
-  transition: 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-code);
-  font-size: 0.85rem;
-}
-.text-link:hover {
-  color: var(--accent-primary);
-}
-.text-link svg {
-  width: 16px;
-  height: 16px;
-}
-
 .work-card__desc {
   font-size: 0.95rem;
   color: var(--text-muted);
   margin-bottom: 0;
   line-height: 1.6;
-
-  /* 追加: テキストカラーの変化設定 */
   transition: color 0.3s ease;
+  flex-grow: 1; /* コンテンツエリアを埋める */
 }
 
-/* 追加: ホバー時にディスクリプションの色を変化させる */
+/* ホバー時にディスクリプションの色を変化させる */
 .work-card:hover .work-card__desc {
   color: var(--accent-primary);
+}
+
+/* リンクエリア (archive-worksと同じデザインへ変更) */
+.work-card__links {
+  margin-top: 20px;
+  padding-top: 15px;
+  /* border-top: 1px solid rgba(255,255,255,0.05); */ /* ボーダー削除 */
+  display: flex;
+  gap: 12px;
+}
+
+/* Text Link (Archive Worksのデザインに合わせる) */
+/* .text-link クラスは使用せず、.works-btn 風のデザインを適用 */
+.text-link {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.text-link svg {
+  width: 16px;
+  height: 16px;
+  transition: 0.3s;
+}
+
+.text-link:hover {
+  transform: translateY(-2px);
+  color: var(--bg-deep);
+  border-color: transparent;
+}
+
+/* 1つ目のリンク (GitHub想定) */
+.text-link:first-child:hover {
+  background: var(--text-main);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* 2つ目のリンク (Visit Site想定) */
+.text-link:last-child:hover {
+  background: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
 }

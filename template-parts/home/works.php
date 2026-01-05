@@ -25,7 +25,6 @@
       ?>
           <article class="work-card u-fade-in-up">
             <div class="work-card__image-wrapper">
-              <img src="" alt="Medical Site" class="work-card__image">
               <!-- アイキャッチの表示 -->
               <?php if (has_post_thumbnail()) : ?>
                 <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="制作物サムネイル" class="work-card__image">
@@ -50,8 +49,8 @@
               <p class="work-card__desc">
                 <?php
                 $excerpt = get_the_excerpt();
-                if (mb_strlen($excerpt) > 60) {
-                  $excerpt = mb_substr($excerpt, 0, 60) . '...';
+                if (mb_strlen($excerpt) > 80) {
+                  $excerpt = mb_substr($excerpt, 0, 80) . '...';
                 }
                 echo $excerpt;
                 ?>

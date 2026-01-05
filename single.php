@@ -40,7 +40,7 @@
     <?php endif; ?>
 
     <?php get_template_part("template-parts/c-pagination-single") ?>
-    <?php get_template_part("template-parts/p-tags-list") ?>
+    <!-- <?php get_template_part("template-parts/p-tags-list") ?> -->
 
 
 

@@ -52,18 +52,18 @@
 
   <header class="header">
     <div class="header__logo">
-      <span class="header__logo-sub">~/</span>Shu<span class="header__logo-accent">_Portfolio</span>
+      <a href="<?php echo home_url(""); ?>" class="header__logo-sub">~/</span>Shu<span class="header__logo-accent">_Portfolio</a>
     </div>
 
     <!-- Desktop Nav -->
     <nav class="nav-desktop">
       <ul class="nav-desktop__list">
-        <li><a href="#about" class="nav-desktop__link">01. About</a></li>
-        <li><a href="#works" class="nav-desktop__link">02. Works</a></li>
-        <li><a href="#blog" class="nav-desktop__link">03. Blog</a></li>
-        <li><a href="#contact" class="nav-desktop__link">04. Contact</a></li>
+        <li><a href="<?php echo home_url("/#about"); ?>" class="nav-desktop__link">01. About</a></li>
+        <li><a href="<?php echo home_url("/#works"); ?>" class="nav-desktop__link">02. Works</a></li>
+        <li><a href="<?php echo home_url("/#blog"); ?>" class="nav-desktop__link">03. Blog</a></li>
+        <li><a href="<?php echo home_url("/contact/"); ?>" class="nav-desktop__link">04. Contact</a></li>
         <li>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="nav-desktop__link nav-desktop__link--icon-only" aria-label="X (Twitter)">
+          <a href="https://x.com/shu_web_net" target="_blank" rel="noopener noreferrer" class="nav-desktop__link nav-desktop__link--icon-only" aria-label="X (Twitter)">
             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px; margin-top: 2px;">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
             </svg>
@@ -83,12 +83,12 @@
   <!-- Mobile Nav Overlay -->
   <nav class="nav-mobile">
     <ul class="nav-mobile__list">
-      <li><a href="#about" class="nav-mobile__link">01. About</a></li>
-      <li><a href="#works" class="nav-mobile__link">02. Works</a></li>
-      <li><a href="#blog" class="nav-mobile__link">03. Blog</a></li>
-      <li><a href="#contact" class="nav-mobile__link">04. Contact</a></li>
+      <li><a href="<?php echo home_url("/#about"); ?>" class="nav-mobile__link">01. About</a></li>
+      <li><a href="<?php echo home_url("/#works"); ?>" class="nav-mobile__link">02. Works</a></li>
+      <li><a href="<?php echo home_url("/#blog"); ?>" class="nav-mobile__link">03. Blog</a></li>
+      <li><a href="<?php echo home_url("/contact/"); ?>" class="nav-mobile__link">04. Contact</a></li>
       <li>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="nav-mobile__link" style="display:inline-flex; align-items:center; gap:10px;">
+        <a href="https://x.com/shu_web_net" target="_blank" rel="noopener noreferrer" class="nav-mobile__link" style="display:inline-flex; align-items:center; gap:10px;">
           Twitter
           <svg viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>

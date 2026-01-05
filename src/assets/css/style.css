@@ -512,7 +512,7 @@ ul {
 .works__grid {
 	display: grid;
 	gap: 40px;
-	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	grid-template-columns: 1fr;
 }
 
 /* Work Card (Block: work-card) */
@@ -527,8 +527,8 @@ ul {
 }
 
 .work-card:hover {
-	border-color: rgba(255, 255, 255, 0.2);
-	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+	border-color: var(--accent-primary); /* ボーダー色をアクセントカラーに変更 */
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 242, 255, 0.3); /* グロー効果を追加 */
 	transform: translateY(-8px);
 }
 
@@ -1941,7 +1941,7 @@ ul {
 	display: flex;
 	height: 80px;
 	justify-content: space-between;
-	padding: 0 40px;
+	padding: 0 20px;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -2019,8 +2019,9 @@ ul {
 	background: transparent;
 	border: none;
 	cursor: pointer;
-	display: none;
+	display: block;
 	height: 24px;
+	margin-left: auto;
 	padding: 0;
 	position: relative;
 	width: 30px;
@@ -2856,6 +2857,10 @@ ul {
 
 @media screen and (min-width: 768px) {
 
+.works__grid {
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
 .single-inner {
 	padding: 60px;
 }
@@ -2896,6 +2901,14 @@ ul {
 .page-privacy-body .wp-block-separator {
 	max-width: 1200px;
 	width: 80vw;
+}
+
+.header {
+	padding: 0 40px;
+}
+
+.hamburger {
+	display: none;
 }
 
 .pagination-single {
@@ -3050,10 +3063,6 @@ ul {
 	max-width: 300px;
 }
 
-.works__grid {
-	grid-template-columns: 1fr;
-}
-
 .journal-item {
 	gap: 12px;
 	grid-template-columns: 1fr;
@@ -3095,17 +3104,8 @@ ul {
 	padding-inline: 20px;
 }
 
-.header {
-	padding: 0 20px;
-}
-
 .nav-desktop {
 	display: none;
-}
-
-.hamburger {
-	display: block;
-	margin-left: auto;
 }
 
 .section {

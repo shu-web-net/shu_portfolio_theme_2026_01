@@ -1,19 +1,5 @@
 @use "../../global/" as global;
 
-/* --- Local Variables (もしGlobalになければここで定義) --- */
-/* 
-:root {
-  --bg-deep: #050505;
-  --bg-sub: #111111;
-  --text-main: #e2e8f0;
-  --text-muted: #94a3b8;
-  --accent-primary: #00f2ff;
-  --accent-secondary: #7000ff;
-  --font-jp: 'Noto Sans JP', sans-serif;
-  --font-code: 'Fira Code', monospace;
-}
-*/
-
 .single {
   padding-top: 140px;
   padding-bottom: 120px;

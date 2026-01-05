@@ -61,8 +61,6 @@
     <?php get_template_part("template-parts/c-pagination-archive", null, array('my_query' => $my_query, 'paged' => $paged)); ?>
 
   </div>
-  <?php get_template_part("template-parts/p-x-follow-me") ?>
-  <!-- <?php get_template_part("template-parts/p-line") ?> -->
 
 
 </main>

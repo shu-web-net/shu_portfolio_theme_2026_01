@@ -52,7 +52,13 @@
 
   <header class="header">
     <div class="header__logo">
-      <a href="<?php echo home_url(""); ?>" class="header__logo-sub">~/</span>Shu<span class="header__logo-accent">_Portfolio</a>
+      <!-- サイトのトップページのみサイトタイトルロゴをh1にし、下層ページでは別にh1を置けるようにする -->
+      <?php if (is_front_page() || is_home()) : ?>
+        <h1 class="site-title"><a href="<?php echo home_url(""); ?>" class="header__logo-sub">~/</span>Shu<span class="header__logo-accent">_Portfolio</a></h1>
+      <?php else : ?>
+        <p class="site-title"><a href="<?php echo home_url(""); ?>" class="header__logo-sub">~/</span>Shu<span class="header__logo-accent">_Portfolio</a></p>
+      <?php endif; ?>
+
     </div>
 
     <!-- Desktop Nav -->

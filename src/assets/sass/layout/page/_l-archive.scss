@@ -1,18 +1,5 @@
 @use "../../global/" as global;
 
-/* --- Local Variables (Globalになければ有効化) --- */
-/*
-:root {
-  --bg-deep: #050505;
-  --bg-sub: #111111;
-  --text-main: #e2e8f0;
-  --text-muted: #94a3b8;
-  --accent-primary: #00f2ff;
-  --accent-secondary: #7000ff;
-  --font-code: 'Fira Code', monospace;
-}
-*/
-
 .archive-main {
   padding-top: 140px;
   padding-bottom: 120px;
@@ -62,7 +49,7 @@
   }
 }
 
-/* --- 検索フォームの簡易スタイル (ウィジェット用) --- */
+/* --- 検索フォーム (ウィジェット用) --- */
 .search-form {
   margin: 2rem auto 4rem;
   max-width: 600px;
@@ -112,8 +99,9 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   height: 100%; /* 高さを揃える */
 
-  /* リンク全体を覆う */
-  a {
+  /* リンク全体を覆う（通常のブログカード用） */
+  /* Worksボタンがある場合は archive-item--works クラス側で上書き */
+  a:not(.works-btn) {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -126,6 +114,22 @@
     transform: translateY(-8px);
     border-color: var(--accent-primary);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 255, 0.1);
+  }
+}
+
+/* --- Works用のカード調整 --- */
+.archive-item--works {
+  display: flex;
+  flex-direction: column;
+
+  /* Worksカードのメインリンクは flex-grow で高さを確保し、ボタンエリアを下に押し出す */
+  .archive-item-link {
+    height: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
   }
 }
 
@@ -168,11 +172,24 @@
   overflow: hidden;
 }
 
+/* Worksタイトル（ディスクリプション表示用） */
+.archive-item-title--works {
+  font-size: 0.95rem; /* 通常タイトルより少し小さく */
+  font-weight: 500;
+  color: var(--text-muted); /* 少し落ち着いた色に */
+  
+  /* 行数制限を解除 (PHP側で文字数制限しているため) */
+  -webkit-line-clamp: unset; 
+  display: block; 
+  
+  line-height: 1.6;
+}
+
 .archive-item:hover .archive-item-title {
   color: var(--accent-primary);
 }
 
-/* 抜粋文 */
+/* 抜粋文 (通常ブログ用) */
 .archive-item-excerpt {
   font-size: 0.9rem;
   color: var(--text-muted);
@@ -180,6 +197,88 @@
   margin-bottom: 1.5rem;
   flex-grow: 1;
   opacity: 0.8;
+}
+
+/* --- Works ボタンエリア --- */
+.archive-item-actions {
+  padding: 0 1.5rem 1.5rem;
+  display: flex;
+  /* 重要な変更点：高さを揃えず上揃えにする */
+  align-items: flex-start; 
+  gap: 12px;
+  margin-top: auto;
+}
+
+/* GitHubとDemoのグループラッパー */
+.works-btn-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ボタン共通スタイル */
+.works-btn {
+  /* GitHubボタンなどは単体でflexアイテムになるため幅調整 */
+  &.works-btn--github {
+    flex: 1;
+  }
+  /* グループ内のSiteボタンは幅100% */
+  &.works-btn--site {
+    width: 100%;
+  }
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-muted);
+  line-height: 1.2;
+
+  svg {
+    transition: 0.3s;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    color: var(--bg-deep);
+    border-color: transparent;
+  }
+}
+
+/* GitHub Button */
+.works-btn--github:hover {
+  background: var(--text-main); /* 白っぽく */
+  color: var(--bg-deep);
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+/* Site Button */
+.works-btn--site:hover {
+  background: var(--accent-primary); /* シアン */
+  color: var(--bg-deep);
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+/* 認証情報テキスト */
+.demo-credentials {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.4;
+  font-family: var(--font-code);
+  background: rgba(0,0,0,0.2);
+  padding: 4px;
+  border-radius: 4px;
 }
 
 /* --- ページネーション (Archive用) --- */
@@ -216,4 +315,96 @@
       padding: 0 15px;
     }
   }
+}
+
+/* --- 見出しコンポーネント (h1見出し) --- */
+.heading-container {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1.5rem 3rem; /* 枠線のために余白を確保 */
+  
+  /* デジタルな枠線装飾 (左上と右下のみ) */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 20px; height: 20px;
+    border-top: 2px solid var(--accent-primary);
+    border-left: 2px solid var(--accent-primary);
+    box-shadow: -2px -2px 10px rgba(0, 242, 255, 0.5);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    border-bottom: 2px solid var(--accent-primary);
+    border-right: 2px solid var(--accent-primary);
+    box-shadow: 2px 2px 10px rgba(0, 242, 255, 0.5);
+  }
+}
+
+/* 日本語タイトル */
+.heading-jp {
+  /* 明朝体などにならないよう、ゴシック体を明示的に指定 */
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.6); /* デジタルな発光 */
+  position: relative;
+  z-index: 1;
+
+  @include global.mq(pc) {
+    font-size: 2.8rem;
+  }
+}
+
+/* 下線 (左から右へ流れるスキャンライン風) */
+.heading-underline {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1); /* ベースの薄い線 */
+  margin: 0 auto 1rem;
+  position: relative;
+  overflow: hidden;
+  
+  /* 動く光のライン */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    animation: scan-line 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes scan-line {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* 英語サブタイトル */
+.heading-en {
+  font-family: var(--font-code);
+  color: var(--accent-primary);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  
+  /* ターミナルログ風の装飾 */
+  &::before { content: "[ system: "; color: var(--text-muted); opacity: 0.6; }
+  &::after { content: " ]"; color: var(--text-muted); opacity: 0.6; }
 }

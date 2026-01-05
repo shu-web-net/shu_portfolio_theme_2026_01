@@ -185,14 +185,8 @@
   border-radius: 4px;
   color: var(--text-muted);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: default;
-  transition: 0.3s;
-  
-  &:hover {
-    background: rgba(0, 242, 255, 0.1);
-    border-color: var(--accent-primary);
-    color: #fff;
-  }
+  cursor: default; /* クリック不可であることを示す */
+  /* ホバーエフェクトを削除したので、押せる誤解を防ぐ */
 }
 
 /* 記事タイトル */

@@ -1,51 +1,130 @@
 @use "../global/" as global;
 
+/* :root {
+  --accent-primary: #00f2ff;
+  --bg-sub: #111111;
+  --text-main: #e2e8f0;
+  --font-code: 'Fira Code', monospace;
+}
+*/
+
 // 個別投稿記事内の、前の記事へ・記事一覧・次の記事へ
 .pagination-single {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-top: 2.5rem;
+  align-items: stretch; /* 高さを揃える */
+  justify-content: space-between; /* 両端配置（一覧ボタンは中央へ） */
+  gap: 10px;
+  margin-top: 4rem;
+  width: 100%;
+  font-family: var(--font-code);
 
   @include global.mq(pc) {
-    gap: 2.5rem;
+    gap: 20px;
+    justify-content: center;
   }
 }
+
+/* 共通ボタンスタイル */
 .pagination-single-prev,
 .pagination-single-list,
 .pagination-single-next {
-  padding-inline: 0.6rem;
-  // padding-block: 0.3rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.3rem;
-  border-radius: 8px;
-  color: var(--text-main);
-  font-weight: 700;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  line-height: 1.2;
 
   @include global.mq(pc) {
-    font-size: 1.5rem;
-    padding-inline: 0.9rem;
+    font-size: 0.9rem;
+    padding: 14px 24px;
+    min-width: 140px;
   }
 
+  /* ホバー時 */
   &:hover {
-    opacity: 0.7;
-    color: var(--accent-primary);
+    color: var(--bg-deep); /* テキストを黒に */
+    background: var(--accent-primary); /* 背景をシアンに */
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4); /* グロー効果 */
+    transform: translateY(-2px);
+    opacity: 1;
+
+    /* ホバー時の矢印などの色反転はtext color継承で対応 */
   }
 }
+
+/* --- 前の記事へ --- */
 .pagination-single-prev {
-  background-color: var(--bg-sub);
+  margin-right: auto; /* 左寄せ */
+  
+  /* アイコン "<" */
+  &::before {
+    content: "<";
+    margin-right: 8px;
+    font-weight: bold;
+    color: var(--accent-primary);
+    transition: color 0.3s;
+  }
+
+  &:hover::before {
+    color: var(--bg-deep);
+  }
 }
 
-.u-sp-hide {
-}
-
-.pagination-single-list {
-  background-color: var(--bg-sub);
-}
-
+/* --- 次の記事へ --- */
 .pagination-single-next {
-  background-color: var(--bg-sub);
+  margin-left: auto; /* 右寄せ */
+  flex-direction: row-reverse; /* アイコンを右側に持ってくるため反転 */
+
+  /* アイコン ">" */
+  &::before { /* row-reverseしているのでbeforeが視覚的に右に来る */
+    content: ">";
+    margin-left: 8px; /* reverseなのでmargin-leftが文字との間隔になる */
+    font-weight: bold;
+    color: var(--accent-primary);
+    transition: color 0.3s;
+  }
+
+  &:hover::before {
+    color: var(--bg-deep);
+  }
+}
+
+/* --- 記事一覧へ --- */
+.pagination-single-list {
+  /* スマホではアイコンのみにするなどの調整も可能だが、今回は文字を表示 */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+
+  /* アイコン "///" (ディレクトリ階層イメージ) */
+  &::before {
+    content: "///";
+    font-size: 0.7em;
+    letter-spacing: -2px;
+    margin-right: 8px;
+    color: var(--accent-secondary); /* 紫などのサブカラー */
+    transition: color 0.3s;
+  }
+
+  &:hover::before {
+    color: var(--bg-deep);
+  }
+}
+
+
+/* スマホ表示時の微調整（テキストを隠すクラス用） */
+.u-sp-hide {
+  display: none;
+  @include global.mq(pc) {
+    display: inline;
+  }
 }

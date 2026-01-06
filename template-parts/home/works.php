@@ -28,7 +28,7 @@
               <?php if (has_post_thumbnail()) : ?>
                 <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="制作物サムネイル" class="work-card__image">
               <?php else: ?>
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/no-image/no-image.png" alt="画像が見つかりません" class="work-card__image">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/no-image/404-img-01.webp" alt="画像が見つかりません" class="work-card__image">
               <?php endif; ?>
             </div>
 

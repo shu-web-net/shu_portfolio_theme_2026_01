@@ -15,7 +15,7 @@
         <?php if (has_post_thumbnail()) : ?>
           <img src="<?php the_post_thumbnail_url('full'); ?>" class="single-thumbnail u-margin-top-30" alt="ポートフォリオ解説記事アイキャッチ画像">
         <?php else: ?>
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/no-image/no-image.png" alt="画像が見つかりません">
+          <img src="<?php echo get_template_directory_uri() ?>/assets/img/no-image/404-img-01.webp" alt="画像が見つかりません">
         <?php endif; ?>
         <!-- タグ類表示 -->
         <?php get_template_part("template-parts/c-term-tags-lists") ?>

@@ -2,86 +2,243 @@
 
 .page-privacy-main {
   margin-top: 120px;
-  text-align: center;
+  text-align: center; /* タイトルなどは中央揃え */
 
   @include global.mq(pc) {
     margin-top: 115px;
   }
-
-  #toc_container {
-    display: none;
-  }
 }
 
 .page-privacy-body {
-  text-align: left;
-  width: 90vw;
-  max-width: 480px;
-  margin-inline: auto;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem 4rem; /* スマホで端が詰まらないようにパディング追加 */
+  width: 100%;
+  max-width: 880px; /* 一行が長くなりすぎないように制限 */
+  text-align: left; /* 本文は左揃えで読みやすく */
+  line-height: 1.8;
+  font-size: 1rem;
 
-  & p {
-    margin-top: 1em;
-    // width: 95vw;
-    margin-inline: auto;
+  @include global.mq(pc) {
+    font-size: 1.05rem;
   }
 
-  & a {
-    color: var(--text-main);
-    font-weight: 700;
-    text-decoration: underline;
-    transition: color 0.3s;
+  /* テキストリンク */
+  a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.3);
+    transition: all 0.3s;
 
     &:hover {
-      color: var(--accent-primary);
+      background: rgba(0, 242, 255, 0.1);
+      border-bottom-color: var(--accent-primary);
+      text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
     }
   }
 
-  & .wp-block-separator {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 95vw;
-    margin-inline: auto;
-
-    @include global.mq(pc) {
-      width: 80vw;
-      // max-width: calc(1200 / 1280 * 100vw);
-      max-width: 1200px;
-    }
+  p {
+    margin-bottom: 2em;
   }
 
-  & h2 {
-    font-size: 1.2em;
-    font-weight: 700;
-    margin-top: 2em;
-    margin-inline: auto;
+  /* --- 目次 (System Log風) --- */
+  #toc_container {
+    background: #0d1117; /* GitHub Dark Dimmed風 */
+    border: 1px solid var(--accent-primary);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin: 3rem auto;
+    /* 幅をコンテンツに合わせる設定に変更 */
+    width: fit-content;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.05);
     position: relative;
-    padding-left: 1em;
+    box-sizing: border-box;
 
+    /* タイトル "Contents" */
+    .toc_title {
+      font-family: var(--font-code);
+      color: var(--accent-primary);
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      display: block;
+      
+      &::before { content: "<"; margin-right: 0.5em; opacity: 0.5; }
+      &::after { content: " />"; margin-left: 0.5em; opacity: 0.5; }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 0.5em;
+      
+      /* --- 修正: 目次内では青いドット(::before)を消す --- */
+      &::before {
+        content: none;
+      }
+
+      a {
+        color: var(--text-muted);
+        border: none;
+        font-size: 0.95rem;
+        transition: 0.2s;
+        text-decoration: none;
+        display: block;
+        padding: 4px 0;
+
+        &:hover {
+          color: var(--text-main);
+          transform: translateX(5px);
+        }
+      }
+    }
+    
+    /* 階層表現 */
+    ul ul {
+      margin-left: 1.5em;
+      margin-top: 0.5em;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 1em;
+    }
+  }
+
+  /* --- 見出し H2 (Neon Underline) --- */
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 4rem 0 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-primary);
+    position: relative;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 30%; /* 短い光るライン */
+      height: 2px;
+      background: #fff;
+      box-shadow: 0 0 10px var(--accent-primary);
+    }
+  }
+
+  /* --- 見出し H3 (Terminal Prompt) --- */
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 3.5rem 0 1.5rem;
+    padding-left: 1.2em;
+    position: relative;
+    font-family: var(--font-code); /* コードフォントで雰囲気を出す */
+
+    &::before {
+      content: ">";
+      position: absolute;
+      left: 0;
+      color: var(--accent-secondary);
+      font-weight: bold;
+    }
+  }
+
+  /* --- 見出し H4 (Left Border) --- */
+  h4 {
+    font-size: 1.2rem;
+    margin: 3rem 0 1.5rem;
+    padding-left: 1rem;
+    border-left: 4px solid var(--accent-success);
+    color: var(--text-main);
+  }
+
+  /* --- リスト (Custom Bullet) --- */
+  ul, ol {
+    margin-bottom: 2em;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 0.8em;
+
+    /* ここの設定が目次にも影響していました */
     &::before {
       content: "";
-      display: block;
-      width: 4px;
-      height: 100%;
-      background-color: var(--accent-primary);
       position: absolute;
       left: 0;
-      top: 0;
+      top: 0.6em;
+      width: 6px;
+      height: 6px;
+      background: var(--accent-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-primary);
     }
   }
 
-  & li {
-    margin-top: 0.6em;
-    position: relative;
-    padding-left: 1.2em;
+  /* --- 引用 (Blockquote) --- */
+  blockquote {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--text-muted);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    color: var(--text-muted);
+    font-style: italic;
+    border-radius: 0 8px 8px 0;
+  }
 
-    &::before {
-      content: "\f111";
-      font: var(--fa-font-solid);
-      font-weight: 700;
-      font-size: 0.5em;
-      position: absolute;
-      left: 0;
-      top: 1.3em;
+  /* --- コードブロック (Gutenberg) --- */
+  .wp-block-code {
+    background: #1e1e1e; /* VS Code Dark風 */
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1.5em;
+    margin-bottom: 2em;
+    font-family: var(--font-code);
+    font-size: 0.9em;
+    overflow-x: auto;
+    
+    code {
+      background: transparent;
+      color: #ce9178; /* 文字色はシンタックスハイライト風 */
     }
+  }
+  
+  /* インラインコード */
+  :not(pre) > code {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-success);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: var(--font-code);
+    font-size: 0.9em;
+  }
+
+  /* --- 画像・動画 --- */
+  .wp-block-image img,
+  .wp-block-video video,
+  .wp-block-embed__wrapper iframe {
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+  }
+
+  /* --- 区切り線 --- */
+  .wp-block-separator {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    margin: 3rem 0;
+    opacity: 0.5;
   }
 }

@@ -18,7 +18,7 @@
       $my_query = new WP_Query(
         array(
           'post_type' => 'works',
-          'posts_per_page' => 9,
+          'posts_per_page' => 6,
           'paged' => $paged,
         )
       );

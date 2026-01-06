@@ -18,7 +18,9 @@
                     <a href="#works" class="btn btn--hero">View Projects -></a>
                 </div>
 
-                <div class="code-mockup u-fade-in-up">
+                <!-- アニメーション用のラッパーを追加してクラスを分離 -->
+                <div class="hero__mockup-wrapper u-fade-in-up">
+                  <div class="code-mockup">
                     <div class="code-mockup__header">
                         <div class="code-mockup__dot code-mockup__dot--red"></div>
                         <div class="code-mockup__dot code-mockup__dot--yellow"></div>
@@ -103,6 +105,7 @@
                             <span class="code-mockup__code">};<span class="code-mockup__cursor"></span></span>
                         </div>
                     </div>
+                  </div>
                 </div>
             </div>
         </section>

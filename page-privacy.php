@@ -15,21 +15,17 @@ Template Name: privacy-policy
     <?php get_template_part("template-parts/c-heading-h1", null, $args) ?>
 
 
-    <div class="page-privacy-body u-margin-top-30">
-
+    <!-- page-privacy-body -->
+    <div class="page-privacy-body">
       <div class="page-privacy-text">
-
-
-        <!-- privacy-body -->
         <div class="privacy-body">
           <?php the_content(); // 本文の表示 
           ?>
-
-        </div><!-- privacy-body -->
-
-
+        </div>
       </div>
     </div>
+    <!-- /page-privacy-body -->
+
 
   </div>
 </main>

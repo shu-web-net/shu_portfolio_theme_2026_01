@@ -26,7 +26,10 @@
   &::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     opacity: 0.05;
     pointer-events: none;
@@ -37,10 +40,15 @@
   &::after {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
     z-index: -1;
     pointer-events: none;
@@ -50,15 +58,17 @@
 .archive-inner {
   position: relative;
   z-index: 1;
-
-  /* コンテナ幅と余白を追加 */
-  width: 100%;
-  max-width: 1200px;
-  margin-inline: auto;
   padding-inline: 20px; /* スマホ用余白 */
+
+  @media screen and (min-width: 550px) {
+    max-width: 70%;
+    margin-inline: auto;
+  }
 
   @include global.mq(pc) {
     padding-inline: 40px; /* PC用余白 */
+    width: 100%;
+    max-width: 1200px;
   }
 }
 
@@ -94,7 +104,11 @@
   gap: 2rem;
   margin-top: 3rem;
 
-  @include global.mq(pc) {
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 1200px) {
     grid-template-columns: repeat(3, 1fr); /* PCは3列 */
     gap: 2.5rem;
   }
@@ -197,7 +211,7 @@
   margin-bottom: 0.8rem;
   color: var(--text-main);
   transition: color 0.3s;
-  
+
   /* 2行制限 */
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -210,11 +224,11 @@
   font-size: 0.95rem; /* 通常タイトルより少し小さく */
   font-weight: 500;
   color: var(--text-muted); /* 少し落ち着いた色に */
-  
+
   /* 行数制限を解除 (PHP側で文字数制限しているため) */
-  -webkit-line-clamp: unset; 
-  display: block; 
-  
+  -webkit-line-clamp: unset;
+  display: block;
+
   line-height: 1.6;
 }
 
@@ -237,7 +251,7 @@
   padding: 0 1.5rem 1.5rem;
   display: flex;
   /* 重要な変更点：高さを揃えず上揃えにする */
-  align-items: flex-start; 
+  align-items: flex-start;
   gap: 12px;
   margin-top: auto;
 }
@@ -272,8 +286,8 @@
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text-muted);
   line-height: 1.2;
 
@@ -292,7 +306,7 @@
 .works-btn--github:hover {
   background: var(--text-main); /* 白っぽく */
   color: var(--bg-deep);
-  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 /* Site Button */
@@ -309,14 +323,15 @@
   text-align: center;
   line-height: 1.4;
   font-family: var(--font-code);
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   padding: 4px;
   border-radius: 4px;
 }
 
 /* --- ページネーション (Archive用) --- */
 /* c-pagination-archive が出力するクラスに合わせて調整してください */
-.pagination, .nav-links {
+.pagination,
+.nav-links {
   margin-top: 4rem;
   display: flex;
   justify-content: center;
@@ -335,7 +350,8 @@
     text-decoration: none;
     transition: 0.3s;
 
-    &.current, &:hover {
+    &.current,
+    &:hover {
       background: var(--accent-primary);
       color: var(--bg-deep);
       border-color: var(--accent-primary);
@@ -343,7 +359,8 @@
       box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
     }
 
-    &.next, &.prev {
+    &.next,
+    &.prev {
       width: auto;
       padding: 0 15px;
     }
@@ -359,13 +376,15 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 1.5rem 3rem; /* 枠線のために余白を確保 */
-  
+
   /* デジタルな枠線装飾 (左上と右下のみ) */
   &::before {
     content: "";
     position: absolute;
-    top: 0; left: 0;
-    width: 20px; height: 20px;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
     border-top: 2px solid var(--accent-primary);
     border-left: 2px solid var(--accent-primary);
     box-shadow: -2px -2px 10px rgba(0, 242, 255, 0.5);
@@ -373,8 +392,10 @@
   &::after {
     content: "";
     position: absolute;
-    bottom: 0; right: 0;
-    width: 20px; height: 20px;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
     border-bottom: 2px solid var(--accent-primary);
     border-right: 2px solid var(--accent-primary);
     box-shadow: 2px 2px 10px rgba(0, 242, 255, 0.5);
@@ -384,7 +405,8 @@
 /* 日本語タイトル */
 .heading-jp {
   /* 明朝体などにならないよう、ゴシック体を明示的に指定 */
-  font-family: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial,
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #fff;
@@ -408,24 +430,35 @@
   margin: 0 auto 1rem;
   position: relative;
   overflow: hidden;
-  
+
   /* 動く光のライン */
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-primary),
+      transparent
+    );
     animation: scan-line 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
 
 @keyframes scan-line {
-  0% { left: -100%; }
-  50% { left: 100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* 英語サブタイトル */
@@ -436,8 +469,16 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 0.8;
-  
+
   /* ターミナルログ風の装飾 */
-  &::before { content: "[ system: "; color: var(--text-muted); opacity: 0.6; }
-  &::after { content: " ]"; color: var(--text-muted); opacity: 0.6; }
+  &::before {
+    content: "[ system: ";
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+  &::after {
+    content: " ]";
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
 }

@@ -2,8 +2,8 @@
 
 // ブレイクポイントとmixin
 $breakpoints: (
-  "sp": "screen and (max-width: 767px)",
-  // "tb": "screen and (min-width: 768px) and (max-width: 1023px)",
+  "sp": "screen and (max-width: 767.98px)",
+  // "tab": "screen and (min-width: 768px) and (max-width: 1023px)",
   "pc": "screen and (min-width: 768px)",
 ) !default;
 

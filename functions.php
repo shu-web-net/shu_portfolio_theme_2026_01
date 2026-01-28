@@ -231,3 +231,6 @@ add_action('pre_get_posts', 'my_add_sort_by_meta');
 add_filter('manage_edit-post_sortable_columns', 'column_views_sortable'); // 投稿ページに追加
 add_filter('manage_edit-page_sortable_columns', 'column_views_sortable'); // 固定ページに追加
 add_filter('manage_edit-works_sortable_columns', 'column_views_sortable'); // カスタム投稿タイプ 'works' に追加
+
+// Contact Form 7で自動挿入されるpタグ、brタグを無効化
+add_filter('wpcf7_autop_or_not', '__return_false');

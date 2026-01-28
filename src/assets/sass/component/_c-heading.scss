@@ -6,16 +6,16 @@
   margin-bottom: 4rem;
   position: relative;
   display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
   padding: 1.5rem 3rem; /* 枠線のために余白を確保 */
-  
+
   /* デジタルな枠線装飾 (左上と右下のみ) */
   &::before {
     content: "";
     position: absolute;
-    top: 0; left: 0;
-    width: 20px; height: 20px;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
     border-top: 2px solid var(--accent-primary);
     border-left: 2px solid var(--accent-primary);
     box-shadow: -2px -2px 10px rgba(0, 242, 255, 0.5);
@@ -23,8 +23,10 @@
   &::after {
     content: "";
     position: absolute;
-    bottom: 0; right: 0;
-    width: 20px; height: 20px;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
     border-bottom: 2px solid var(--accent-primary);
     border-right: 2px solid var(--accent-primary);
     box-shadow: 2px 2px 10px rgba(0, 242, 255, 0.5);
@@ -34,7 +36,8 @@
 /* 日本語タイトル */
 .heading-jp {
   /* 明朝体などにならないよう、ゴシック体を明示的に指定 */
-  font-family: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial,
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #fff;
@@ -58,24 +61,35 @@
   margin: 0 auto 1rem;
   position: relative;
   overflow: hidden;
-  
+
   /* 動く光のライン */
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-primary),
+      transparent
+    );
     animation: scan-line 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
 
 @keyframes scan-line {
-  0% { left: -100%; }
-  50% { left: 100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* 英語サブタイトル */
@@ -86,8 +100,16 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 0.8;
-  
+
   /* ターミナルログ風の装飾 */
-  &::before { content: "[ system: "; color: var(--text-muted); opacity: 0.6; }
-  &::after { content: " ]"; color: var(--text-muted); opacity: 0.6; }
+  &::before {
+    content: "[ system: ";
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+  &::after {
+    content: " ]";
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
 }

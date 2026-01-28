@@ -2,7 +2,6 @@
 
 .page-privacy-main {
   margin-top: 120px;
-  text-align: center; /* タイトルなどは中央揃え */
 
   @include global.mq(pc) {
     margin-top: 115px;

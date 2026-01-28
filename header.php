@@ -7,7 +7,7 @@
   <title>Shu | Web Developer Portfolio</title>
 
   <!-- favicon -->
-  <link rel="icon" href="<?php echo get_template_directory_uri() ?>/assets/img/profile/プロフィール画像スタイリッシュ.ico" type="image/x-icon" />
+  <link rel="icon" href="<?php echo get_template_directory_uri() ?>/assets/img/profile/プロフィール画像スタイリッシュ.webp" type="image/x-icon" />
   <!-- appleのアイコンはpngで指定必須 -->
   <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri() ?>/assets/img/profile/プロフィール画像スタイリッシュ.ico" />
 
@@ -103,3 +103,8 @@
       </li>
     </ul>
   </nav>
+
+  <!-- WordPressの設定ファイルである wp-config.php に以下の1行を追加
+  functions.phpではないので要注意
+  ここで呼び出せるようにしたのは備忘録のため -->
+  define('WPCF7_AUTOP', false);

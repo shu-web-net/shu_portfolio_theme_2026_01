@@ -7,7 +7,7 @@ Template Name: privacy-policy
 <?php get_header(); ?>
 
 <main class="page-privacy-main">
-  <div class="page-privacy-inner">
+  <div class="l-inner page-privacy-inner">
     <?php $args = array(
       "heading-jp" => "プライバシーポリシー",
       "heading-en" => "Privacy Policy",

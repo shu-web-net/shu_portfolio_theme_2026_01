@@ -101,7 +101,15 @@
       ?>
     </div>
 
-    <div class="journal__view-all u-fade-in-up">
+    <!-- リンクエリアの強化 -->
+    <div class="works__footer u-fade-in-up">
+      <a href="https://www.notion.so/_-3-2f5c25ba278180deaeb1e50e751dde7d" target="_blank" rel="noopener noreferrer" class="responsive-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+          <line x1="12" y1="18" x2="12.01" y2="18"></line>
+        </svg>
+        Responsive Views (Notion)
+      </a>
       <a href="<?php echo home_url("/works/"); ?>" class="view-all-link">View All Projects -></a>
     </div>
   </div>
